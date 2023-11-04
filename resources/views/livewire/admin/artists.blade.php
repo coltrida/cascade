@@ -8,6 +8,7 @@
             <th scope="col">email</th>
             <th scope="col">Country</th>
             <th scope="col">Style</th>
+            <th scope="col">Nr. Albums</th>
         </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->country}}</td>
                 <td>{{$item->artist->tag->name}}</td>
+                <td>{{$item->artist->albums_count}}</td>
             </tr>
         @endforeach
         <tr>

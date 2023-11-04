@@ -14,7 +14,7 @@ class Artists extends Component
     {
         return view('livewire.admin.artists', [
             'artists' => User::artisti()->with(['artist' => function($a){
-                $a->with('tag');
+                $a->withCount('albums')->with('tag');
             }])->simplePaginate(3)
         ]);
     }
