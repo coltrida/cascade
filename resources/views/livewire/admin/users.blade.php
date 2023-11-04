@@ -23,6 +23,4 @@
         </tr>
         </tbody>
     </table>
-
-
 </div>

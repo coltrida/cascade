@@ -101,7 +101,7 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-black">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/" wire:navigate>
+        <a class="navbar-brand" href="/" wire:navigate.hover>
             <img src="{{asset('/img/logo.jpg')}}" alt="logo" width="200">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -112,16 +112,16 @@
                 @auth
                     @if(auth()->user()->isAdmin())
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="/admin/users" wire:navigate>Users</a>
+                            <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="/admin/users" wire:navigate.hover>Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5" href="/admin/artists" wire:navigate>Artists</a>
+                            <a class="btn btn-warning rounded-5" href="/admin/artists" wire:navigate.hover>Artists</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5 mx-2" href="/admin/albums" wire:navigate>Albums</a>
+                            <a class="btn btn-warning rounded-5 mx-2" href="/admin/albums" wire:navigate.hover>Albums</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5" href="/admin/tags" wire:navigate>Tags</a>
+                            <a class="btn btn-warning rounded-5" href="/admin/tags" wire:navigate.hover>Tags</a>
                         </li>
                     @endif
                 @endauth
@@ -163,10 +163,6 @@
                     </li>
                 @endauth
             </ul>
-            {{--<form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>--}}
         </div>
     </div>
 </nav>
@@ -179,7 +175,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 </script>  -->
 <script src="{{asset('/js/bootstrap.bundle.js')}}">
-</script> 
+</script>
 
 </body>
 </html>
