@@ -112,16 +112,16 @@
                 @auth
                     @if(auth()->user()->isAdmin())
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="/admin/users" wire:navigate.hover>Users</a>
+                            <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('admin.users')}}" wire:navigate.hover>Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5" href="/admin/artists" wire:navigate.hover>Artists</a>
+                            <a class="btn btn-warning rounded-5" href="{{route('admin.artists')}}" wire:navigate.hover>Artists</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5 mx-2" href="/admin/albums" wire:navigate.hover>Albums</a>
+                            <a class="btn btn-warning rounded-5 mx-2" href="{{route('admin.albums')}}" wire:navigate.hover>Albums</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5" href="/admin/tags" wire:navigate.hover>Tags</a>
+                            <a class="btn btn-warning rounded-5" href="{{route('admin.tags')}}" wire:navigate.hover>Tags</a>
                         </li>
                     @endif
                 @endauth
@@ -154,7 +154,7 @@
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5 mx-2" href="{{route('register')}}">i'm an Artist</a>
+                        <a class="btn btn-warning rounded-5" href="{{route('register')}}">i'm an Artist</a>
                     </li>
                 @endauth
             </ul>
