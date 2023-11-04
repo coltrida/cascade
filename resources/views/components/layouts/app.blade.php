@@ -138,14 +138,9 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="dropdown-item"  {{--onclick="event.preventDefault();
-                                                this.closest('form').submit();"--}}>Logout</button>
-
-                                    {{--<x-dropdown-link :href="route('logout')"
-                                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>--}}
+                                    <button type="submit" class="dropdown-item">
+                                        Logout
+                                    </button>
                                 </form>
 
                             </li>
@@ -153,13 +148,13 @@
                     </div>
                 @else
                     <li class="nav-item">
+                        <a class="btn btn-warning rounded-5" href="{{route('register')}}">register</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5" href="{{route('register')}}">register as User</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-warning rounded-5 mx-2" href="{{route('register')}}">register as Artist</a>
+                        <a class="btn btn-warning rounded-5 mx-2" href="{{route('register')}}">i'm an Artist</a>
                     </li>
                 @endauth
             </ul>
