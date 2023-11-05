@@ -32,7 +32,11 @@
                     @endif
                 </td>
                 <td>
-                    <a class="btn btn-success">Add Songs</a>
+                    @if($item->visible)
+                        <a class="btn btn-primary" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>View Songs</a>
+                    @else
+                        <a class="btn btn-success" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>Add Songs</a>
+                    @endif
                 </td>
             </tr>
         @endforeach
