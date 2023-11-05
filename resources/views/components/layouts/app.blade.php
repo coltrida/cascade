@@ -9,6 +9,14 @@
     <link href="{{asset('/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('/css/bootstrap.css')}}" rel="stylesheet">
 
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Kodchasan:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -102,7 +110,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-black">
     <div class="container-fluid">
         <a class="navbar-brand" href="/" wire:navigate>
-            <img src="{{asset('/img/logo.jpg')}}" alt="logo" width="200">
+            <img src="{{asset('/img/ca-scade-logo.png')}}" alt="logo" width="240">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -153,6 +161,15 @@
                     </div>
                 @else
                     <li class="nav-item">
+                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">REGISTER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-warning rounded-5" href="{{route('register')}}">LOG IN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-light rounded-5 mx-2" href="{{route('register')}}">I'M AN ARTIST</a>
+                    </li>
+                   <!--  <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
                     </li>
                     <li class="nav-item">
@@ -160,7 +177,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" href="{{route('register')}}">register as Artist</a>
-                    </li>
+                    </li> -->
                 @endauth
             </ul>
             {{--<form class="d-flex" role="search">
