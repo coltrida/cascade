@@ -1,5 +1,5 @@
 <div>
     @persist('player')
-    <audio src="{{ asset('/1.mp3') }}" controls></audio>
+    <audio src="{{ asset($canzoneDaSuonare) }}" autoplay controls></audio>
     @endpersist
 </div>

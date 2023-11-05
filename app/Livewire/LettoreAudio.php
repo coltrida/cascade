@@ -17,7 +17,8 @@ class LettoreAudio extends Component
 
     public function play($idSong)
     {
-        dd($idSong);
+        $this->canzoneDaSuonare = '/storage/songs/'.$idSong.'.mp3';
+
     }
 
     public function render()

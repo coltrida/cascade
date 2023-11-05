@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('price')->nullable();
             $table->boolean('visible')->nullable()->default(false);
+            $table->boolean('authorized')->nullable()->default(false);
             $table->string('stripeId')->nullable();
             $table->timestamps();
         });

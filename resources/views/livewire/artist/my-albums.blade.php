@@ -15,6 +15,7 @@
             <th scope="col">Name</th>
             <th scope="col">price</th>
             <th scope="col">visible</th>
+            <th scope="col">authorized</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -32,10 +33,27 @@
                     @endif
                 </td>
                 <td>
-                    @if($item->visible)
-                        <a class="btn btn-primary" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>View Songs</a>
+                    @if($item->authorized)
+                        <i style="color: green" class="bi bi-check-square"></i>
                     @else
-                        <a class="btn btn-success" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>Add Songs</a>
+                        <i style="color: red" class="bi bi-ban"></i>
+                    @endif
+                </td>
+                <td>
+                    @if($item->visible)
+                        <a class="btn btn-primary position-relative" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>
+                            View Songs
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{$item->songs_count}}
+                            </span>
+                        </a>
+                    @else
+                        <a class="btn btn-success position-relative" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>
+                            Add Songs
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                {{$item->songs_count}}
+                            </span>
+                        </a>
                     @endif
                 </td>
             </tr>

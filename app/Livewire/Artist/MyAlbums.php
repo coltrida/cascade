@@ -28,7 +28,9 @@ class MyAlbums extends Component
     {
         return view('livewire.artist.my-albums', [
             'user' => User::with(['artist' => function($ar){
-                $ar->with('albums');
+                $ar->with(['albums' => function($alb){
+                    $alb->withCount('songs');
+                }]);
             }])
                 ->find(Auth::user()->id)
         ]);
