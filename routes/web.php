@@ -17,11 +17,33 @@ Route::group(
         'prefix' => 'admin'
     ],
     function() {
-        Route::get('/users', Users::class);
-        Route::get('/albums', Albums::class);
-        Route::get('/artists', Artists::class);
-        Route::get('/tags', Tags::class);
-    });
+        Route::get('/users', Users::class)->name('admin.users');
+        Route::get('/albums', Albums::class)->name('admin.albums');
+        Route::get('/artists', Artists::class)->name('admin.artists');
+        Route::get('/tags', Tags::class)->name('admin.tags');
+});
+
+//-------------------Artist------------------------------
+Route::group(
+    [
+        'middleware' => ['auth','verifyIsArtist'],
+        'prefix' => 'artist'
+    ],
+    function() {
+
+});
+
+//-------------------User------------------------------
+Route::group(
+    [
+        'middleware' => ['auth'],
+        'prefix' => 'user'
+    ],
+    function() {
+
+});
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

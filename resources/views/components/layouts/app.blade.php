@@ -120,16 +120,16 @@
                 @auth
                     @if(auth()->user()->isAdmin())
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="/admin/users" wire:navigate>Users</a>
+                            <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('admin.users')}}" wire:navigate.hover>Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5" href="/admin/artists" wire:navigate>Artists</a>
+                            <a class="btn btn-warning rounded-5" href="{{route('admin.artists')}}" wire:navigate.hover>Artists</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5 mx-2" href="/admin/albums" wire:navigate>Albums</a>
+                            <a class="btn btn-warning rounded-5 mx-2" href="{{route('admin.albums')}}" wire:navigate.hover>Albums</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-warning rounded-5" href="/admin/tags" wire:navigate>Tags</a>
+                            <a class="btn btn-warning rounded-5" href="{{route('admin.tags')}}" wire:navigate.hover>Tags</a>
                         </li>
                     @endif
                 @endauth
@@ -146,14 +146,9 @@
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit" class="dropdown-item"  {{--onclick="event.preventDefault();
-                                                this.closest('form').submit();"--}}>Logout</button>
-
-                                    {{--<x-dropdown-link :href="route('logout')"
-                                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                        {{ __('Log Out') }}
-                                    </x-dropdown-link>--}}
+                                    <button type="submit" class="dropdown-item">
+                                        Logout
+                                    </button>
                                 </form>
 
                             </li>
@@ -161,29 +156,25 @@
                     </div>
                 @else
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">REGISTER</a>
+                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="http://localhost/cascade/public/index.php/login">REGISTER</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5" href="{{route('register')}}">LOG IN</a>
+                        <a class="btn btn-warning rounded-5" href="http://localhost/cascade/public/index.php/register">LOG IN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-light rounded-5 mx-2" href="{{route('register')}}">I'M AN ARTIST</a>
-                    </li>
-                   <!--  <li class="nav-item">
+                        <a class="btn btn-light rounded-5 mx-2" href="http://localhost/cascade/public/index.php/register">I'M AN ARTIST</a>
+                    </li>       
+                    <!-- <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5" href="{{route('register')}}">register as User</a>
+                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" href="{{route('register')}}">register as Artist</a>
                     </li> -->
                 @endauth
             </ul>
-            {{--<form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>--}}
         </div>
     </div>
 </nav>
@@ -196,7 +187,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 </script>  -->
 <script src="{{asset('/js/bootstrap.bundle.js')}}">
-</script> 
+</script>
 
 </body>
 </html>
