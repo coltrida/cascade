@@ -1,5 +1,12 @@
 <div class="container">
-    <h2>Artists</h2>
+    <div class="d-flex justify-content-between my-3">
+        <h2>Artists ({{$artists->total()}})</h2>
+        <div class="d-flex">
+            <input type="text" wire:model="searchText" class="form-control border-2" placeholder="search">
+            <button class="btn btn-primary" wire:click="search">search</button>
+            <button class="btn btn-warning" wire:click="resetSearch">reset</button>
+        </div>
+    </div>
     <table class="table">
         <thead>
         <tr>

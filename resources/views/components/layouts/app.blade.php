@@ -165,7 +165,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-light rounded-5 mx-2" href="http://localhost/cascade/public/index.php/register">I'M AN ARTIST</a>
-                    </li>       
+                    </li>
                     <!-- <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
                     </li>
