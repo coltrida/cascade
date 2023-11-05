@@ -10,12 +10,26 @@ class Albums extends Component
 {
     use WithPagination;
 
+    public $searchText = '';
+
+    public function search()
+    {
+        $this->resetPage();
+    }
+
+    public function resetSearch()
+    {
+        $this->searchText = '';
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.admin.albums', [
-            'albums' => Album::with(['artist' => function($a){
+            'albums' => Album::where('name', 'like', '%'.$this->searchText.'%')
+                ->with(['artist' => function($a){
                 $a->with('user');
-            }])->simplePaginate(3)
+            }])->paginate(3)
         ]);
     }
 }
