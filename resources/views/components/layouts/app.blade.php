@@ -161,7 +161,7 @@
                     </div>
                 @else
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="http://localhost/cascade/public/index.php/login">REGISTER</a>
+                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="http://localhost/cascade/public/index.php/login">SIGN UP</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-warning rounded-5" href="http://localhost/cascade/public/index.php/register">LOG IN</a>
@@ -205,6 +205,8 @@ $(document).ready(function(){
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
+    prevArrow:"<button type='button' class='slick-prev pull-left'><i class='bi bi-chevron-left'></i></button>",
+    nextArrow:"<button type='button' class='slick-next pull-right'><i class='bi bi-chevron-right'></i></button>"
   });
 });
 </script>

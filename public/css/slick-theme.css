@@ -19,7 +19,7 @@
 .slick-prev,
 .slick-next
 {
-    font-size: 0;
+    font-size: 30px;
     line-height: 0;
 
     position: absolute;
@@ -39,7 +39,7 @@
     color: transparent;
     border: none;
     outline: none;
-    background: #000;
+    background: transparent;
 }
 .slick-prev:hover,
 .slick-prev:focus,
@@ -79,7 +79,7 @@
 
 .slick-prev
 {
-    left: -25px;
+    left: -35px;
 }
 [dir='rtl'] .slick-prev
 {
@@ -88,7 +88,7 @@
 }
 .slick-prev:before
 {
-    content: '←';
+    /* content: '←'; */
 }
 [dir='rtl'] .slick-prev:before
 {
@@ -106,7 +106,7 @@
 }
 .slick-next:before
 {
-    content: '→';
+    /* content: '→'; */
 }
 [dir='rtl'] .slick-next:before
 {
