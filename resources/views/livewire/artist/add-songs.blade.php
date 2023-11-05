@@ -31,7 +31,8 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->name}}</td>
                 <td>
-                    <button style="width: 50px" type="button" class="btn btn-primary">
+                    <button wire:click="$dispatchTo('lettore-audio', 'playsong', { idSong: {{ $item->id }} })"
+                        class="btn btn-primary" style="width: 50px">
                         <i class="bi bi-play-circle"></i>
                     </button>
                 </td>
