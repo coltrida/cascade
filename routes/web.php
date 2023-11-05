@@ -30,7 +30,8 @@ Route::group(
         'prefix' => 'artist'
     ],
     function() {
-
+        Route::get('/home', \App\Livewire\Artist\Home::class)->name('artist.home');
+        Route::get('/myAlbums', \App\Livewire\Artist\MyAlbums::class)->name('artist.myAlbums');
 });
 
 //-------------------User------------------------------
