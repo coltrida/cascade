@@ -11,6 +11,9 @@
     <link href="{{asset('/css/slick.css')}}" rel="stylesheet">
     <link href="{{asset('/css/slick-theme.css')}}" rel="stylesheet">
 
+    {{--  bootstrap icon--}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
