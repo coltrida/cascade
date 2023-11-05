@@ -10,10 +10,19 @@ class Users extends Component
 {
     use WithPagination;
 
+    public $searchText = '';
+
+    public function search()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.admin.users', [
-            'users' => User::utenti()->simplePaginate(3)
+            'users' => User::utenti()
+                ->where('name', 'like', '%'.$this->searchText.'%')
+                ->simplePaginate(3)
         ]);
     }
 }
