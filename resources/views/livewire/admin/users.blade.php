@@ -1,9 +1,10 @@
 <div class="container">
     <div class="d-flex justify-content-between my-3">
-        <h2>Users</h2>
+        <h2>Users ({{$users->total()}})</h2>
         <div class="d-flex">
             <input type="text" wire:model="searchText" class="form-control border-2" placeholder="search">
             <button class="btn btn-primary" wire:click="search">search</button>
+            <button class="btn btn-warning" wire:click="resetSearch">reset</button>
         </div>
     </div>
 

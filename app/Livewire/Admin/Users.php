@@ -17,12 +17,18 @@ class Users extends Component
         $this->resetPage();
     }
 
+    public function resetSearch()
+    {
+        $this->searchText = '';
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.admin.users', [
             'users' => User::utenti()
                 ->where('name', 'like', '%'.$this->searchText.'%')
-                ->simplePaginate(3)
+                ->paginate(3)
         ]);
     }
 }
