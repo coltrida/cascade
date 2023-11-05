@@ -39,3 +39,50 @@ section.new-on-cascade p {
     color:#fff;
 }
 
+.how {
+    font-family: 'Kodchasan', sans-serif;
+    padding:2% 5%;
+    
+}
+
+.how h1 {
+    text-align:center;
+    padding-bottom:2%;
+}
+
+.how-cards {
+    display:flex;
+    justify-content: space-around;
+}
+
+.how-cards .card {
+    border:2px solid #F06D4E;
+}
+
+.how-cards .card .list-group-item {
+    border:none;
+    padding:20px;
+    display: flex;
+    align-items: center;
+}
+
+.bi-person-circle::before
+ {
+    content: "\f4d7";
+    font-size: 120px;
+    color: #F06D4E;
+}
+.bi-person-bounding-box::before {
+    font-size: 120px;
+    color: #F06D4E;
+}
+
+.how-cards .card .list-group-item .bi::before {
+    font-size:32px;
+    color:#F06D4E;
+    margin-right:10px;
+}
+
+.how-cards .card > .list-group {
+    border-bottom:none;
+}
