@@ -26,7 +26,15 @@ class AddSongs extends Component
             'name' => $this->name,
             'album_id' => $this->album->id,
         ]);
-        $this->song->storePubliclyAs('songs', $song->id.'.mp3', 'public');;
+        $this->song->storePubliclyAs('songs', $song->id.'.mp3', 'public');
+
+        if (Album::withCount('songs')->find($this->album->id)->songs_count == 8){
+            $this->album->visible = 1;
+            $this->album->save();
+        }
+
+        $this->name = '';
+        $this->song = '';
     }
 
     public function playSong($idSong)
