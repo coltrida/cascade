@@ -11,7 +11,7 @@
         @if(!$album->visible)
             <form wire:submit="save" class="d-flex">
                 <input type="text" wire:model="name" class="form-control border-2" placeholder="song name">
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" wire:model="song" type="file" id="formFile" accept=".mp3">
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         @endif

@@ -41,14 +41,14 @@
                 </td>
                 <td>
                     @if($item->visible)
-                        <a class="btn btn-primary position-relative" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>
+                        <a class="btn btn-success position-relative" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>
                             View Songs
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {{$item->songs_count}}
                             </span>
                         </a>
                     @else
-                        <a class="btn btn-success position-relative" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>
+                        <a class="btn btn-primary position-relative" href="{{route('artist.myAlbums.addSongs', $item->id)}}" wire:navigate>
                             Add Songs
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
                                 {{$item->songs_count}}
