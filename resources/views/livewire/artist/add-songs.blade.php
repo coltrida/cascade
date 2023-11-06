@@ -31,9 +31,13 @@
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->name}}</td>
                 <td>
-                    <button wire:click="$dispatchTo('lettore-audio', 'playsong', { idSong: {{ $item->id }} })"
-                        class="btn btn-primary" style="width: 50px">
-                        <i class="bi bi-play-circle"></i>
+                    <button wire:click="playSong({{ $item->id }})"
+                            class="btn btn-primary" style="width: 50px">
+                        @if($item->id == $isSongInPlay)
+                            <i class="bi bi-pause-circle"></i>
+                        @else
+                            <i class="bi bi-play-circle"></i>
+                        @endif
                     </button>
                 </td>
             </tr>
