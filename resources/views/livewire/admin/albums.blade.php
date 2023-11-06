@@ -14,6 +14,9 @@
             <th scope="col">Name</th>
             <th scope="col">Artist</th>
             <th scope="col">Price</th>
+            <th scope="col">Visible</th>
+            <th scope="col">Authorized</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +26,26 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->artist->user->name}}</td>
                 <td>€ {{$item->price}}</td>
+                <td>
+                    @if($item->visible)
+                        <i style="color: green" class="bi bi-check-square"></i>
+                    @else
+                        <i style="color: red" class="bi bi-ban"></i>
+                    @endif
+                </td>
+                <td>
+                    @if($item->authorized)
+                        <i style="color: green" class="bi bi-check-square"></i>
+                    @else
+                        <i style="color: red" class="bi bi-ban"></i>
+                    @endif
+                </td>
+                <td>
+                    <button class="btn btn-success" style="width: 100px" >Songs</button>
+                    @if(!$item->authorized)
+                        <button class="btn btn-primary" style="width: 100px" wire:click="authorizeAlbum({{$item->id}})">Authorize</button>
+                    @endif
+                </td>
             </tr>
         @endforeach
         <tr>

@@ -23,6 +23,13 @@ class Albums extends Component
         $this->resetPage();
     }
 
+    public function authorizeAlbum($idAlbum)
+    {
+        $album = Album::find($idAlbum);
+        $album->authorized = 1;
+        $album->save();
+    }
+
     public function render()
     {
         return view('livewire.admin.albums', [

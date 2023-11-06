@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($albums as $item)
+        @foreach ($users as $item)
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->name}}</td>
