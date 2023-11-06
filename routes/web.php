@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Admin\Albums;
 use App\Livewire\Admin\Artists;
+use App\Livewire\Admin\SongsOfAlbum;
 use App\Livewire\Admin\Tags;
 use App\Livewire\Admin\Users;
 use App\Livewire\Home;
@@ -19,6 +20,7 @@ Route::group(
     function() {
         Route::get('/users', Users::class)->name('admin.users');
         Route::get('/albums', Albums::class)->name('admin.albums');
+        Route::get('/albums/{idAlbum}/songs', SongsOfAlbum::class)->name('admin.album.songs');
         Route::get('/artists', Artists::class)->name('admin.artists');
         Route::get('/tags', Tags::class)->name('admin.tags');
 });

@@ -41,7 +41,7 @@
                     @endif
                 </td>
                 <td>
-                    <button class="btn btn-success" style="width: 100px" >Songs</button>
+                    <a href="{{route('admin.album.songs', $item->id)}}" class="btn btn-success" style="width: 100px" >Songs</a>
                     @if(!$item->authorized)
                         <button class="btn btn-primary" style="width: 100px" wire:click="authorizeAlbum({{$item->id}})">Authorize</button>
                     @endif
