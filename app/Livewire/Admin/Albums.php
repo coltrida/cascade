@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Admin;
 
+use App\Mail\AlbumAuthorized;
 use App\Models\Album;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -25,9 +27,13 @@ class Albums extends Component
 
     public function authorizeAlbum($idAlbum)
     {
-        $album = Album::find($idAlbum);
+        $album = Album::with(['artist' => function($art){
+            $art->with('user');
+        }])->find($idAlbum);
         $album->authorized = 1;
         $album->save();
+        $address = $album->artist->user->email;
+        Mail::to($address)->send(new AlbumAuthorized($album));
     }
 
     public function render()

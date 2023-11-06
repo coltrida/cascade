@@ -168,7 +168,7 @@
                         </ul>
                     </div>
                 @else
-                    <li class="nav-item">
+                    {{--<li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="http://localhost/cascade/public/index.php/login">SIGN UP</a>
                     </li>
                     <li class="nav-item">
@@ -176,8 +176,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-light rounded-5 mx-2" href="http://localhost/cascade/public/index.php/register">I'M AN ARTIST</a>
-                    </li>
-                    <!-- <li class="nav-item">
+                    </li>--}}
+                    <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
                     </li>
                     <li class="nav-item">
@@ -185,7 +185,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-warning rounded-5 mx-2" href="{{route('register')}}">register as Artist</a>
-                    </li> -->
+                    </li>
                 @endauth
             </ul>
         </div>

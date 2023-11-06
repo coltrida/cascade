@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'vitali',
-            'email' => 'vitali@vitali.it',
+            'email' => 'coltrida@gmail.com',
             'role' => 'artist',
             'country' => null,
             'city' => null,
