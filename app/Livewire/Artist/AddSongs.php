@@ -3,8 +3,10 @@
 namespace App\Livewire\Artist;
 
 use App\Livewire\LettoreAudio;
+use App\Mail\AlbumVisibled;
 use App\Models\Album;
 use App\Models\Song;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -31,6 +33,7 @@ class AddSongs extends Component
         if (Album::withCount('songs')->find($this->album->id)->songs_count == 8){
             $this->album->visible = 1;
             $this->album->save();
+            Mail::to('coltrida@gmail.com')->send(new AlbumVisibled($this->album));
         }
 
         $this->name = '';
