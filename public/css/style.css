@@ -1,3 +1,7 @@
+body {
+    
+}
+
 .new-slider div.new-abum {
     display:flex;
     padding:10px;
@@ -41,7 +45,7 @@ section.new-on-cascade p {
 
 .how {
     font-family: 'Kodchasan', sans-serif;
-    padding:2% 5%;
+    padding:4% 5%;
     
 }
 
@@ -85,4 +89,32 @@ section.new-on-cascade p {
 
 .how-cards .card > .list-group {
     border-bottom:none;
+}
+
+.value-artist {
+    background:#000;
+    display:flex;
+    color:#fff;
+}
+
+.value-artist h1 {
+    color:#F06D4E;
+}
+
+.value-left,
+.value-right {width:50%;}
+
+.value-left {
+    padding:3%;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+.value-right img {
+    max-width:100%;
+}
+
+.value-artist .value-left .btn-warning {
+    margin-left:0 !important;
 }

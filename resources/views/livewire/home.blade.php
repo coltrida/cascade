@@ -78,6 +78,7 @@
                 </ul>
                 <div class="card-body" style="text-align:center;">
                     <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="#" class="card-link">SIGN UP</a>
+                    <a class="btn btn-secondary rounded-5 mx-2" aria-current="page" href="#" class="card-link">EXAMPLE CASE</a>
                     
                 </div>
             </div>
@@ -92,17 +93,41 @@
                     <li class="list-group-item"><i class="bi bi-cloud-upload"></i>Upload your music for FREE on CA-SCADE.</li>
                     <li class="list-group-item"><i class="bi bi-cash-coin"></i>When a fan sells your music to another fan, you receive 70% and the fan 30% of the selling price</li>
                     <li class="list-group-item"><i class="bi bi-paypal"></i>All you need is a PayPal account.</li>
-                    <li class="list-group-item">What are you waiting for?</li>
+                    <li style="font-weight:bold;" class="list-group-item">LET YOUR FANS TO BE YOUR BEST SALES TOOL!</li>
                     
                     
                 </ul>
                 <div class="card-body" style="text-align:center;">
                     <a class="btn btn-light rounded-5 mx-2" style="width:192px;border:1px solid #F06D4E;" aria-current="page" href="#" class="card-link">SIGN UP as ARTIST</a>
+                    <a class="btn btn-secondary rounded-5 mx-2" aria-current="page" href="#" class="card-link">EXAMPLE CASE</a>
                     
                 </div>
             </div>
           
         </div>
         
+    </section>
+    <!-- SECTION ARTIST -->
+    <section class="value-artist">
+        <div class="value-left">
+            <div class="content-value">
+            <h1>ARE YOU AN ARTIST?</h1>
+            <h1>GIVE VALUE TO YOUR MUSIC!</h1>
+                <p>Tired of making no money on traditional streaming platforms?</p>
+                <p>Remove your music from platforms where you make no money,
+                    and join Ca-scade, where for every album the fans buy
+                    YOU GET PAID!</p>
+                <p>LET YOU FANS BE YOUR SALES FORCE!</p>
+                <p>IT'S 100% FREE.</p>
+                <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="#" class="card-link">SIGN UP</a>
+                <a class="btn btn-secondary rounded-5 mx-2" aria-current="page" href="#" class="card-link">EXAMPLE CASE</a>
+            </h1>
+
+            </div>
+            
+        </div>
+        <div class="value-right">
+            <img src="{{asset('/img/artist-money.jpg')}}" alt="">
+        </div>
     </section>
 </div>
