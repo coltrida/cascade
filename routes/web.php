@@ -51,6 +51,7 @@ Route::group(
         Route::get('/home', \App\Livewire\User\Home::class)->name('user.home');
         Route::get('/allArtist', AllArtist::class)->name('user.allArtist');
         Route::get('/allArtist/{idArtist}/albums', AlbumsOfArtist::class)->name('user.allArtist.albums');
+        Route::get('/allArtist/{idArtist}/albums/{idAlbum}/songs', \App\Livewire\User\SongsOfAlbum::class)->name('user.allArtist.albums.songs');
 });
 
 

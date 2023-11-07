@@ -13,7 +13,7 @@ class AlbumsOfArtist extends Component
     public function mount($idArtist)
     {
         $this->artist = Artist::with(['user','albums' => function($a){
-            $a->authorized()->withCount('songs');
+            $a->authorized()->withCount('songs')->with('userSales');
         }])->find($idArtist);
     }
 

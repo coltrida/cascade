@@ -32,7 +32,9 @@ class AllArtist extends Component
                 $query->where('name', 'like', '%'.$this->searchText.'%');
                 })
                 ->with('user', 'tag')
-                ->withCount('albums')
+                ->withCount(['albums' => function($alb){
+                    $alb->authorized();
+                }])
                 ->paginate(3)
         ]);
     }
