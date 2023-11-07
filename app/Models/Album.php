@@ -35,6 +35,11 @@ class Album extends Model
     protected $guarded = [];
     protected $appends = ['cover'];
 
+    public function scopeAuthorized($query)
+    {
+        return $query->where('authorized', 1);
+    }
+
     public function getCoverAttribute()
     {
         return \Storage::disk('public')->fileExists('/covers/'.$this->id.'.jpg') ?

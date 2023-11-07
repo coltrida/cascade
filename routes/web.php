@@ -9,6 +9,7 @@ use App\Livewire\Admin\Users;
 use App\Livewire\Artist\AddSongs;
 use App\Livewire\Artist\MyAlbums;
 use App\Livewire\Home;
+use App\Livewire\User\AlbumsOfArtist;
 use App\Livewire\User\AllArtist;
 use Illuminate\Support\Facades\Route;
 
@@ -49,7 +50,7 @@ Route::group(
     function() {
         Route::get('/home', \App\Livewire\User\Home::class)->name('user.home');
         Route::get('/allArtist', AllArtist::class)->name('user.allArtist');
-
+        Route::get('/allArtist/{idArtist}/albums', AlbumsOfArtist::class)->name('user.allArtist.albums');
 });
 
 
