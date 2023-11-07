@@ -6,7 +6,10 @@ use App\Livewire\Admin\Artists;
 use App\Livewire\Admin\SongsOfAlbum;
 use App\Livewire\Admin\Tags;
 use App\Livewire\Admin\Users;
+use App\Livewire\Artist\AddSongs;
+use App\Livewire\Artist\MyAlbums;
 use App\Livewire\Home;
+use App\Livewire\User\AllArtist;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class);
@@ -33,8 +36,8 @@ Route::group(
     ],
     function() {
         Route::get('/home', \App\Livewire\Artist\Home::class)->name('artist.home');
-        Route::get('/myAlbums', \App\Livewire\Artist\MyAlbums::class)->name('artist.myAlbums');
-        Route::get('/myAlbums/{idAlbum}/addSongs', \App\Livewire\Artist\AddSongs::class)->name('artist.myAlbums.addSongs');
+        Route::get('/myAlbums', MyAlbums::class)->name('artist.myAlbums');
+        Route::get('/myAlbums/{idAlbum}/addSongs', AddSongs::class)->name('artist.myAlbums.addSongs');
 });
 
 //-------------------User------------------------------
@@ -44,6 +47,8 @@ Route::group(
         'prefix' => 'user'
     ],
     function() {
+        Route::get('/home', \App\Livewire\User\Home::class)->name('user.home');
+        Route::get('/allArtist', AllArtist::class)->name('user.allArtist');
 
 });
 

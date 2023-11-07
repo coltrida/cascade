@@ -137,14 +137,22 @@
                             <a class="btn btn-warning rounded-5" href="{{route('admin.tags')}}" wire:navigate.hover>Tags</a>
                         </li>
                     @endif
-                        @if(auth()->user()->isArtist())
+                    @if(auth()->user()->isArtist())
+                        <li class="nav-item">
+                            <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('artist.home')}}" wire:navigate.hover>home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-warning rounded-5" href="{{route('artist.myAlbums')}}" wire:navigate.hover>My Albums</a>
+                        </li>
+                    @endif
+                    @if(auth()->user()->isUser())
                             <li class="nav-item">
-                                <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('artist.home')}}" wire:navigate.hover>home</a>
+                                <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('user.home')}}" wire:navigate.hover>home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-warning rounded-5" href="{{route('artist.myAlbums')}}" wire:navigate.hover>My Albums</a>
+                                <a class="btn btn-warning rounded-5" href="{{route('user.allArtist')}}" wire:navigate.hover>All Artist</a>
                             </li>
-                        @endif
+                    @endif
                 @endauth
             </ul>
 
