@@ -25,7 +25,7 @@ class PaypalController extends Controller
             $album = Album::find($response['purchase_units'][0]['reference_id'])->toArray();
             $albumService->buyAlbum($album);
             Mail::to('coltrida@gmail.com')->queue(new AlbumBuy($album));
-            return to_route('user.allArtist.albums', $album['artist_id']);
+            return to_route('user.allArtist.albums', $album['artist_id'])->with('message', 'Album Bought');
         } else {
             return to_route('user.paypal.cancel');
         }

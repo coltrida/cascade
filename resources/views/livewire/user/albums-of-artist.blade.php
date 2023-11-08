@@ -1,4 +1,11 @@
 <div class="container">
+
+    @if(session()->has('message'))
+        <div class="alert alert-success my-2 text-center" role="alert" id="messageBox">
+            Album Bought!
+        </div>
+    @endif
+
     <div class="d-flex justify-content-between my-3">
         <h2>Album of {{$artist->user->name}}</h2>
     </div>
@@ -39,4 +46,5 @@
         </tbody>
     </table>
 </div>
+
 

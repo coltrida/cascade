@@ -223,6 +223,8 @@ $(document).ready(function(){
     prevArrow:"<button type='button' class='slick-prev pull-left'><i class='bi bi-chevron-left'></i></button>",
     nextArrow:"<button type='button' class='slick-next pull-right'><i class='bi bi-chevron-right'></i></button>"
   });
+
+    $('#messageBox').fadeOut(5000);
 });
 </script>
 
