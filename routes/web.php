@@ -22,6 +22,7 @@ Route::group(
         'prefix' => 'admin'
     ],
     function() {
+        Route::get('/home', \App\Livewire\Admin\Home::class)->name('admin.home');
         Route::get('/users', Users::class)->name('admin.users');
         Route::get('/albums', Albums::class)->name('admin.albums');
         Route::get('/albums/{idAlbum}/songs', SongsOfAlbum::class)->name('admin.album.songs');

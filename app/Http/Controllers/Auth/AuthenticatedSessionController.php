@@ -28,8 +28,13 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if( \auth()->user()->isUser()){
+           return redirect()->route('user.home');
+        } elseif (\auth()->user()->isAdmin()){
+            return redirect()->route('admin.home');
+        }
+        return redirect()->route('artist.home');
+     //   return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

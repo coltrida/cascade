@@ -7,6 +7,20 @@
             <button class="btn btn-warning" wire:click="resetSearch">reset</button>
         </div>
     </div>
+
+    <div class="btn-group my-3 d-flex justify-content-center" role="group" aria-label="Basic radio toggle button group">
+        @foreach($tags as $tag)
+            <div>
+                <input type="radio" wire:click="selectTag({{$tag->id}})" class="btn-check" name="btnradio" id="{{$tag->id}}" autocomplete="off">
+                <label class="btn btn-outline-primary" for="{{$tag->id}}">{{$tag->name}}</label>
+            </div>
+        @endforeach
+        <div>
+            <input type="radio" wire:click="selectTag({{0}})" class="btn-check" name="btnradio" id="reset" autocomplete="off">
+            <label class="btn btn-outline-danger" for="reset">Reset</label>
+        </div>
+    </div>
+
     <table class="table">
         <thead>
         <tr>
