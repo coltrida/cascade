@@ -31,7 +31,7 @@
                         </span>
                     </a>
                     @if(!$item->userSales->contains('id', auth()->user()->id))
-                        <a href="#" class="btn btn-primary">Buy</a>
+                        <a wire:click="buyAlbumByPaypal({{$item}})" class="btn btn-primary">Buy</a>
                     @endif
                 </td>
             </tr>

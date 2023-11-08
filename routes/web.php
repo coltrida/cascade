@@ -52,6 +52,9 @@ Route::group(
         Route::get('/allArtist', AllArtist::class)->name('user.allArtist');
         Route::get('/allArtist/{idArtist}/albums', AlbumsOfArtist::class)->name('user.allArtist.albums');
         Route::get('/allArtist/{idArtist}/albums/{idAlbum}/songs', \App\Livewire\User\SongsOfAlbum::class)->name('user.allArtist.albums.songs');
+
+        Route::get('/paypal/success', [\App\Http\Controllers\PaypalController::class, 'successPaypal'])->name('user.paypal.success');
+        Route::get('/paypal/cancel', [\App\Http\Controllers\PaypalController::class, 'cancelPaypal'])->name('user.paypal.cancel');
 });
 
 
