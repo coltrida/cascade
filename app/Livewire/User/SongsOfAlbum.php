@@ -10,6 +10,7 @@ class SongsOfAlbum extends Component
 {
     public $album;
     public $isSongInPlay;
+    public $albumBought;
 
     public function playSong($idSong)
     {
@@ -19,7 +20,10 @@ class SongsOfAlbum extends Component
 
     public function mount($idAlbum)
     {
-        $this->album = Album::with('songs')->find($idAlbum);
+        $this->album = Album::with('songs', 'userSales')->find($idAlbum);
+        if ($this->album->userSales->contains('id', auth()->user()->id)){
+            $this->albumBought = true;
+        }
     }
 
     public function render()

@@ -30,7 +30,6 @@
                             {{$item->songs_count}}
                         </span>
                     </a>
-{{--                    {{dd($item->userSales)}}--}}
                     @if(!$item->userSales->contains('id', auth()->user()->id))
                         <a href="#" class="btn btn-primary">Buy</a>
                     @endif
