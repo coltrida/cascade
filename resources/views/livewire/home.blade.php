@@ -19,46 +19,7 @@
                     </a>
                 </div>
             @endforeach
-{{--            <div class="new-abum">
-                <a href=""><img src="{{asset('/img/forever.jpg')}}" alt="">
-                    <p>Album title</p>
-                    <p>Artist Name</p>
-                </a>
-            </div>
-            <div class="new-abum">
-                <a href=""><img src="{{asset('/img/hanging.jpg')}}" alt="">
-                    <p>Album title</p>
-                    <p>Artist Name</p>
-                </a>
-            </div>
-            <div class="new-abum">
-                <a href=""><img src="{{asset('/img/indivisible.jpg')}}" alt="">
-                    <p>Album title</p>
-                    <p>Artist Name</p>
-                </a>
-            </div>
-            <div class="new-abum">
-                <a href=""><img src="{{asset('/img/justme.jpg')}}" alt="">
-                    <p>Album title</p>
-                    <p>Artist Name</p>
-                </a>
-            </div>
-            <div class="new-abum">
-                <a href=""><img src="{{asset('/img/thegood.jpg')}}" alt="">
-                    <p>Album title</p>
-                    <p>Artist Name</p>
-                </a>
-            </div>
-            <div class="new-abum">
-                <a href=""><img src="{{asset('/img/unreality.jpg')}}" alt="">
-                    <p>Album title</p>
-                    <p>Artist Name</p>
-                </a>
-
-            </div>--}}
-
         </div>
-
     </section>
     <!-- SECTION HOW IT WORKS -->
     <section class="how">
