@@ -114,9 +114,9 @@
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-black">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/" wire:navigate>
-            <img src="{{asset('/img/ca-scade-logo.png')}}" alt="logo" width="240">
-        </a>
+
+            <img src="{{asset('/img/logoSmall.png')}}" alt="logo" width="40">
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

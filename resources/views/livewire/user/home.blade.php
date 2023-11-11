@@ -14,7 +14,7 @@
         <div class="d-flex justify-content-center">
             @foreach($myLastAlbums as $album)
                 <div>
-                    <a href=""><img width="120" src="{{asset($album->cover)}}" alt="">
+                    <a href="{{route('user.allArtist.albums.songs', ['idArtist' => $album->artist_id, 'idAlbum' => $album->id])}}"><img width="120" src="{{asset($album->cover)}}" alt="">
                         <p>{{$album->name}}</p>
                         <p>{{$album->artist->user->name}}</p>
                     </a>

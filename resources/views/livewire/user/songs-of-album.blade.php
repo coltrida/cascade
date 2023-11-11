@@ -3,7 +3,7 @@
         <h2>
             Song of Album: {{$album->name}}
         </h2>
-        <a href="{{route('user.allArtist.albums', $album->artist_id)}}" wire:navigate class="btn btn-warning">
+        <a href="{{ URL::previous() }}" wire:navigate class="btn btn-warning">
             back
         </a>
     </div>
@@ -13,6 +13,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Favorite</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -21,6 +22,11 @@
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->name}}</td>
+                <td>
+                    @if($user->favorites->contains('id', $item->id))
+                        <i style="color: green; font-size: 22px" class="bi bi-check-square"></i>
+                    @endif
+                </td>
                 <td>
                     @if($albumBought)
                     <button wire:click="playSong({{ $item->id }})"

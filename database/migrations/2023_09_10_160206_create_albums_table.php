@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('artist_id');
             $table->string('name');
             $table->decimal('price')->nullable();
-            $table->boolean('visible')->nullable()->default(false);
-            $table->boolean('authorized')->nullable()->default(false);
+            $table->boolean('visible')->nullable()->default(true);
+            $table->boolean('authorized')->nullable()->default(true);
             $table->string('stripeId')->nullable();
             $table->timestamps();
         });

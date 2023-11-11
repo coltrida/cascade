@@ -160,4 +160,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Tag::class, 'tags_users', 'user_id', 'tag_id');
     }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Song::class, 'favorite_song', 'user_id', 'song_id');
+    }
 }
