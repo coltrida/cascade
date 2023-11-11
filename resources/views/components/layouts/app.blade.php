@@ -206,7 +206,7 @@
 
 <footer style="background: #000000">
     <div class="text-center bg-gray-100">
-            <h5 class="text-white">Vitaly</h5>
+            <h5 class="text-white">cascade @2023</h5>
             <livewire:lettore-audio />
     </div>
 </footer>

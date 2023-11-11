@@ -40,12 +40,12 @@
                     <tbody>
                     @foreach ($artists as $item)
                         <tr>
-                            <th scope="row">{{$item->id}}</th>
+                            <th scope="row">{{$item->artist->id}}</th>
                             <td>{{$item->name}}</td>
                             <td>{{$item->country}}</td>
                             <td>{{$item->artist->tag->name}}</td>
                             <td>
-                                <a href="" class="btn btn-primary">Albums</a>
+                                <a href="{{route('user.allArtist.albums', $item->artist->id)}}" wire:navigate class="btn btn-primary">Albums</a>
                             </td>
                         </tr>
                     @endforeach
@@ -76,7 +76,9 @@
                         <td>{{$item->artist->user->name}}</td>
                         <td>€ {{$item->price}}</td>
                         <td>
-                            <a href="" class="btn btn-primary">Songs</a>
+                            <a href="{{route('user.allArtist.albums.songs',
+                                ['idArtist' => $item->artist_id, 'idAlbum' => $item->id])}}"
+                                        wire:navigate class="btn btn-primary">Songs</a>
                         </td>
                     </tr>
                 @endforeach
@@ -94,6 +96,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Album</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -101,16 +104,23 @@
                     @foreach ($songs as $item)
                         <tr>
                             <th scope="row">{{$item->id}}</th>
-                            <td>{{$item}}</td>
                             <td>
-                                <button wire:click="playSong({{ $item->id }})"
-                                        class="btn btn-primary" style="width: 50px">
-                                    @if($item->id == $idSongInPlay)
-                                        <i class="bi bi-pause-circle"></i>
-                                    @else
-                                        <i class="bi bi-play-circle"></i>
-                                    @endif
-                                </button>
+                                {{$item->name}}
+                            </td>
+                            <td>
+                                {{$item->album->name}}
+                            </td>
+                            <td>
+                                @if($item->album->userSales->contains('id', auth()->user()->id))
+                                    <button wire:click="playSong({{ $item->id }})"
+                                            class="btn btn-primary" style="width: 50px">
+                                        @if($item->id == $idSongInPlay)
+                                            <i class="bi bi-pause-circle"></i>
+                                        @else
+                                            <i class="bi bi-play-circle"></i>
+                                        @endif
+                                    </button>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
