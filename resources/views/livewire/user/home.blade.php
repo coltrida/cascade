@@ -10,7 +10,7 @@
     </section>
 
     <section>
-        <h2>My Last Albums - {{$viewResult}}</h2>
+        <h2>My Last Albums</h2>
         <div class="d-flex justify-content-center">
             @foreach($myLastAlbums as $album)
                 <div>

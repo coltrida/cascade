@@ -158,6 +158,14 @@
 
             <ul class="navbar-nav">
                 @auth
+                    @if(auth()->user()->isUser())
+                        <li class="nav-item">
+                            <a class="mx-2" style="color: red; font-size: 28px"
+                               aria-current="page" href="{{route('user.favorites')}}" wire:navigate>
+                                <i class="bi bi-heart-fill"></i>
+                            </a>
+                        </li>
+                    @endif
                     <div class="btn-group dropstart">
                         <button type="button" class="btn btn-warning rounded-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             {{auth()->user()->name}}
@@ -186,13 +194,13 @@
                         <a class="btn btn-light rounded-5 mx-2" href="http://localhost/cascade/public/index.php/register">I'M AN ARTIST</a>
                     </li>--}}
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
+                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('register')}}">SIGN UP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">login</a>
+                        <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">LOG IN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-warning rounded-5 mx-2" href="{{route('register')}}">register as Artist</a>
+                        <a class="btn btn-light rounded-5 mx-2" href="{{route('register')}}">I'M AN ARTIST</a>
                     </li>
                 @endauth
             </ul>

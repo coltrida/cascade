@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('album_id');
             $table->string('name');
+            $table->boolean('favorite')->default(0);
             $table->timestamps();
         });
     }

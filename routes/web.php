@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Admin\Albums;
 use App\Livewire\Admin\Artists;
@@ -11,6 +12,7 @@ use App\Livewire\Artist\MyAlbums;
 use App\Livewire\Home;
 use App\Livewire\User\AlbumsOfArtist;
 use App\Livewire\User\AllArtist;
+use App\Livewire\User\Favorites;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class);
@@ -53,9 +55,10 @@ Route::group(
         Route::get('/allArtist', AllArtist::class)->name('user.allArtist');
         Route::get('/allArtist/{idArtist}/albums', AlbumsOfArtist::class)->name('user.allArtist.albums');
         Route::get('/allArtist/{idArtist}/albums/{idAlbum}/songs', \App\Livewire\User\SongsOfAlbum::class)->name('user.allArtist.albums.songs');
+        Route::get('/favorites', Favorites::class)->name('user.favorites');
 
-        Route::get('/paypal/success', [\App\Http\Controllers\PaypalController::class, 'successPaypal'])->name('user.paypal.success');
-        Route::get('/paypal/cancel', [\App\Http\Controllers\PaypalController::class, 'cancelPaypal'])->name('user.paypal.cancel');
+        Route::get('/paypal/success', [PaypalController::class, 'successPaypal'])->name('user.paypal.success');
+        Route::get('/paypal/cancel', [PaypalController::class, 'cancelPaypal'])->name('user.paypal.cancel');
 });
 
 
