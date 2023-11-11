@@ -2,6 +2,7 @@
 
 namespace App\Livewire\User;
 
+use App\Livewire\LettoreAudio;
 use App\Models\Album;
 use App\Models\Song;
 use App\Models\User;
@@ -13,6 +14,7 @@ class Home extends Component
     use WithPagination;
 
     public $searchText;
+    public $idSongInPlay;
     public $viewResult = null;
 
     public function search()
@@ -30,7 +32,8 @@ class Home extends Component
 
     public function playSong($idSong)
     {
-
+        $this->idSongInPlay = $idSong;
+        $this->dispatch('playsong', idSong: $idSong)->to(LettoreAudio::class);
     }
 
     public function render()

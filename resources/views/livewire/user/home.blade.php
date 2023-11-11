@@ -101,18 +101,16 @@
                     @foreach ($songs as $item)
                         <tr>
                             <th scope="row">{{$item->id}}</th>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item}}</td>
                             <td>
-                                @if($albumBought)
-                                    <button wire:click="playSong({{ $item->id }})"
-                                            class="btn btn-primary" style="width: 50px">
-                                        @if($item->id == $isSongInPlay)
-                                            <i class="bi bi-pause-circle"></i>
-                                        @else
-                                            <i class="bi bi-play-circle"></i>
-                                        @endif
-                                    </button>
-                                @endif
+                                <button wire:click="playSong({{ $item->id }})"
+                                        class="btn btn-primary" style="width: 50px">
+                                    @if($item->id == $idSongInPlay)
+                                        <i class="bi bi-pause-circle"></i>
+                                    @else
+                                        <i class="bi bi-play-circle"></i>
+                                    @endif
+                                </button>
                             </td>
                         </tr>
                     @endforeach

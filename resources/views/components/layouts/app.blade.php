@@ -199,13 +199,14 @@
         </div>
     </div>
 </nav>
-{{ $slot }}
 
-<footer style="background: #de8282; position: fixed;
-  left: 0;
-  bottom: 0; width: 100%;">
+<div style="min-height: 31rem;">
+    {{ $slot }}
+</div>
+
+<footer style="background: #000000">
     <div class="text-center bg-gray-100">
-            <h5>Vitaly</h5>
+            <h5 class="text-white">Vitaly</h5>
             <livewire:lettore-audio />
     </div>
 </footer>
