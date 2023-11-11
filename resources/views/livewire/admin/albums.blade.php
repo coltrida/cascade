@@ -7,6 +7,7 @@
             <button class="btn btn-warning" wire:click="resetSearch">reset</button>
         </div>
     </div>
+
     <table class="table">
         <thead>
         <tr>
