@@ -24,7 +24,7 @@
                 <td>{{$item->name}}</td>
                 <td>
                     @if($user->favorites->contains('id', $item->id))
-                        <i style="color: green; font-size: 22px" class="bi bi-check-square"></i>
+                        <i style="color: red; font-size: 24px" class="bi bi-heart-fill"></i>
                     @endif
                 </td>
                 <td>

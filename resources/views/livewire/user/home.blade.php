@@ -2,7 +2,8 @@
     <section class="my-4">
         <div class="d-flex justify-content-end">
             <div class="d-flex">
-                <input type="text" wire:model="searchText" class="form-control border-2" placeholder="search">
+                <input type="text" wire:model="searchText" wire:keydown.enter="search"
+                       class="form-control border-2" placeholder="search">
                 <button class="btn btn-primary" wire:click="search">search</button>
                 <button class="btn btn-warning" wire:click="resetSearch">reset</button>
             </div>

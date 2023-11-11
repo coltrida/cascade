@@ -43,16 +43,16 @@ class Home extends Component
                 $a->limit(7)->get();
             }])
                 ->find(auth()->user()->id)->albumSales,
-            'albums' => Album::where('name', 'like', '%'.$this->searchText.'%')
+            'albums' => Album::where('name', $this->searchText)
                 ->with(['artist' => function($a){
                     $a->with('user');
                 }])->paginate(3, pageName: 'albums'),
-            'artists' => User::artisti()->where('name', 'like', '%'.$this->searchText.'%')
+            'artists' => User::artisti()->where('name', $this->searchText)
                 ->with('artist.tag')->paginate(3, pageName: 'artists'),
             'songs' => Song::with(['album' => function($a){
                 $a->with('userSales');
             }])
-                ->where('name', 'like', '%'.$this->searchText.'%')
+                ->where('name', $this->searchText)
                 ->paginate(3, pageName: 'songs')
         ]);
     }
