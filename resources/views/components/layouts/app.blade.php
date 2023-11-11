@@ -115,7 +115,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-black">
     <div class="container-fluid">
 
-            <img src="{{asset('/img/logoSmall.png')}}" alt="logo" width="40">
+            <img src="{{asset('/img/logoSmall.png')}}" class="mx-2" alt="logo" width="40">
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -147,10 +147,13 @@
                     @endif
                     @if(auth()->user()->isUser())
                             <li class="nav-item">
-                                <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('user.home')}}" wire:navigate.hover>home</a>
+                                <a class="btn btn-warning rounded-5 " aria-current="page" href="{{route('user.home')}}" wire:navigate.hover>home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-warning rounded-5" href="{{route('user.allArtist')}}" wire:navigate.hover>All Artist</a>
+                                <a class="btn btn-warning rounded-5 mx-2" href="{{route('user.allArtist')}}" wire:navigate.hover>All Artist</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-warning rounded-5" href="{{route('user.myAlbums')}}" wire:navigate.hover>My Albums</a>
                             </li>
                     @endif
                 @endauth

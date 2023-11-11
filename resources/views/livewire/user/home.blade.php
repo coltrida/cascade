@@ -14,7 +14,7 @@
         <h2>My Last Albums</h2>
         <div class="d-flex justify-content-center">
             @foreach($myLastAlbums as $album)
-                <div>
+                <div class="mx-2">
                     <a href="{{route('user.allArtist.albums.songs', ['idArtist' => $album->artist_id, 'idAlbum' => $album->id])}}">
                         <img width="120" src="{{asset($album->cover)}}" alt="">
                         <p>{{$album->name}}</p>
