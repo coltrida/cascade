@@ -26,7 +26,6 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">email</th>
             <th scope="col">Country</th>
             <th scope="col">Style</th>
             <th scope="col">Action</th>
@@ -37,7 +36,6 @@
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->user->name}}</td>
-                <td>{{$item->user->email}}</td>
                 <td>{{$item->user->country}}</td>
                 <td>{{$item->tag->name}}</td>
                 <td>
