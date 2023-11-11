@@ -40,9 +40,15 @@ class Home extends Component
     {
         return view('livewire.user.home', [
             'myLastAlbums' => User::with(['albumSales' => function($a){
-                $a->limit(7)->get();
-            }])
-                ->find(auth()->user()->id)->albumSales,
+                    $a->limit(7)->get();
+                }])->find(auth()->user()->id)->albumSales,
+            'myFavorites' => User::with(['favorites' => function($s){
+                    $s->with(['album' => function($al){
+                        $al->with(['artist' => function($ar){
+                            $ar->with('user');
+                        }]);
+                    }]);
+                }])->find(auth()->user()->id)->favorites,
             'albums' => Album::where('name', $this->searchText)
                 ->with(['artist' => function($a){
                     $a->with('user');
@@ -50,8 +56,8 @@ class Home extends Component
             'artists' => User::artisti()->where('name', $this->searchText)
                 ->with('artist.tag')->paginate(3, pageName: 'artists'),
             'songs' => Song::with(['album' => function($a){
-                $a->with('userSales');
-            }])
+                    $a->with('userSales');
+                }])
                 ->where('name', $this->searchText)
                 ->paginate(3, pageName: 'songs')
         ]);

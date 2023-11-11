@@ -9,8 +9,9 @@ use Livewire\Component;
 
 class LettoreAudio extends Component
 {
-    public $canzoneDaSuonare;
+    public $percorsoCanzoneDaSuonare;
     public $idCanzoneDaSuonare;
+    public $canzoneDaSuonare;
 
     public function getListeners()
     {
@@ -30,7 +31,12 @@ class LettoreAudio extends Component
     public function play($idSong)
     {
         $this->idCanzoneDaSuonare = $idSong;
-        $this->canzoneDaSuonare = '/storage/songs/'.$idSong.'.mp3';
+        $this->canzoneDaSuonare = Song::with(['album' => function($a){
+            $a->with(['artist' => function($art){
+                $art->with('user');
+            }]);
+        }])->find($idSong);
+        $this->percorsoCanzoneDaSuonare = '/storage/songs/'.$idSong.'.mp3';
 
     }
 
