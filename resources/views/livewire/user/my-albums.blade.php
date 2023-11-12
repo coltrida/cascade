@@ -8,6 +8,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
+            <th scope="col">Cover</th>
             <th scope="col">Artist</th>
             <th scope="col">Action</th>
         </tr>
@@ -17,6 +18,9 @@
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->name}}</td>
+                <td>
+                    <img width="110" src="{{$item->cover}}" alt="cover">
+                </td>
                 <td>{{$item->artist->user->name}}</td>
                 <td>
                     <a class="btn btn-success position-relative" href="{{route('user.allArtist.albums.songs',

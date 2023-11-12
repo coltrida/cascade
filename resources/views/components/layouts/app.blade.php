@@ -162,6 +162,9 @@
             <ul class="navbar-nav">
                 @auth
                     @if(auth()->user()->isUser())
+
+                        <livewire:shuffle-btn />
+
                         <li class="nav-item">
                             <a class="mx-2" style="color: red; font-size: 28px"
                                aria-current="page" href="{{route('user.favorites')}}" wire:navigate>

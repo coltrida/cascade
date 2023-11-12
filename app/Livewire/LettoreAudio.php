@@ -17,6 +17,7 @@ class LettoreAudio extends Component
     {
         return [
             "playsong" => 'play',
+            "shuffleAllMusic" => 'shuffleAllMusic',
         ];
     }
 
@@ -37,7 +38,16 @@ class LettoreAudio extends Component
             }]);
         }])->find($idSong);
         $this->percorsoCanzoneDaSuonare = '/storage/songs/'.$idSong.'.mp3';
+    }
 
+    public function shuffleAllMusic()
+    {
+        $allMySongs = User::with(['albumSales' => function($a){
+            $a->with(['songs', 'artist' => function($art){
+                $art->with('user');
+            }]);
+        }])->find(auth()->user()->id)->albumSales;
+        dd($allMySongs);
     }
 
     public function render()
