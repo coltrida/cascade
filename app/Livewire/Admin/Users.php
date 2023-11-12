@@ -27,7 +27,10 @@ class Users extends Component
     {
         return view('livewire.admin.users', [
             'users' => User::utenti()
-                ->where('name', 'like', '%'.$this->searchText.'%')
+                ->when($this->searchText, function ($query){
+                    $query->where('name', 'like', '%'.$this->searchText.'%')
+                        ->orWhere('surname', 'like', '%'.$this->searchText.'%');
+                })
                 ->paginate(3)
         ]);
     }

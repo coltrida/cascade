@@ -53,7 +53,7 @@ class Home extends Component
                 ->with(['artist' => function($a){
                     $a->with('user');
                 }])->paginate(3, pageName: 'albums'),
-            'artists' => User::artisti()->where('name', $this->searchText)
+            'artists' => User::artisti()->where('name', $this->searchText)->orWhere('surname', $this->searchText)
                 ->with('artist.tag')->paginate(3, pageName: 'artists'),
             'songs' => Song::with(['album' => function($a){
                     $a->with('userSales');

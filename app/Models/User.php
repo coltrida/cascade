@@ -100,6 +100,11 @@ class User extends Authenticatable
         return $this->created_at ? $this->created_at->format('d-m-Y') : null;
     }
 
+    public function getFullnameAttribute()
+    {
+        return $this->name.' '.$this->surname;
+    }
+
     public function scopeUtenti($query)
     {
         return $query->where('role', 'user');

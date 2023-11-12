@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'admin',
+            'surname' => 'admin',
             'email' => 'admin@admin.it',
             'role' => 'admin',
             'country' => null,
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'cacao',
+            'surname' => 'cacao',
             'email' => 'cacao@cacao.it',
             'role' => 'user',
             'country' => 'Italy',
@@ -37,7 +39,8 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'vitali',
+            'name' => 'Tommaso',
+            'surname' => 'vitali',
             'email' => 'coltrida@gmail.com',
             'role' => 'artist',
             'country' => null,

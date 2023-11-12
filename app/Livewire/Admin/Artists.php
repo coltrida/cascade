@@ -27,10 +27,14 @@ class Artists extends Component
     {
         return view('livewire.admin.artists', [
             'artists' => User::artisti()
-                ->where('name', 'like', '%'.$this->searchText.'%')
                 ->with(['artist' => function($a){
                     $a->withCount('albums')->with('tag');
-            }])->paginate(3)
+            }])
+                ->when($this->searchText, function ($query){
+                    $query->where('name', 'like', '%'.$this->searchText.'%')
+                        ->orWhere('surname', 'like', '%'.$this->searchText.'%');
+                })
+                ->paginate(3)
         ]);
     }
 }

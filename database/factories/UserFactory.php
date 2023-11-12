@@ -20,7 +20,8 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName(),
+            'surname' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
             'role' => Arr::random(['user', 'artist']),
             'country' => Arr::random(['USA', 'Germany', 'Italy', 'France', 'Spain']),

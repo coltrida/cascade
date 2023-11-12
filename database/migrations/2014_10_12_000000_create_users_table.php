@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('stripe_id')->nullable();
             $table->string('name');
+            $table->string('surname');
             $table->string('email')->unique();
             $table->string('country')->nullable();
             $table->string('city')->nullable();

@@ -18,7 +18,7 @@
                     <a href="{{route('user.allArtist.albums.songs', ['idArtist' => $album->artist_id, 'idAlbum' => $album->id])}}">
                         <img  src="{{asset($album->cover)}}" alt="">
                         <p>{{$album->name}}</p>
-                        <p>{{$album->artist->user->name}}</p>
+                        <p>{{$album->artist->user->fullname}}</p>
                     </a>
                 </div>
             @endforeach
@@ -34,7 +34,7 @@
                         <img src="{{asset('img/song.jpg')}}" alt="">
                         <p>{{$song->name}}</p>
                         <p>{{$song->album->name}}</p>
-                        <p>{{$song->album->artist->user->name}}</p>
+                        <p>{{$song->album->artist->user->fullname}}</p>
                     </a>
                 </div>
             @endforeach
@@ -50,7 +50,7 @@
                         <img src="{{asset('img/song.jpg')}}" alt="">
                         <p>{{$song->name}}</p>
                         <p>{{$song->album->name}}</p>
-                        <p>{{$song->album->artist->user->name}}</p>
+                        <p>{{$song->album->artist->user->fullname}}</p>
                     </a>
                 </div>
             @endforeach
@@ -75,7 +75,7 @@
                     @foreach ($artists as $item)
                         <tr>
                             <th scope="row">{{$item->artist->id}}</th>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->fullname}}</td>
                             <td>{{$item->country}}</td>
                             <td>{{$item->artist->tag->name}}</td>
                             <td>
@@ -107,7 +107,7 @@
                     <tr>
                         <th scope="row">{{$item->id}}</th>
                         <td>{{$item->name}}</td>
-                        <td>{{$item->artist->user->name}}</td>
+                        <td>{{$item->artist->user->fullname}}</td>
                         <td>€ {{$item->price}}</td>
                         <td>
                             <a href="{{route('user.allArtist.albums.songs',
