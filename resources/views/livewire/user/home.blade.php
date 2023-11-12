@@ -41,6 +41,22 @@
         </div>
     </section>
 
+    <section id="my-favourites" style="margin-top: 60px">
+        <h2>Suggested for You</h2>
+        <div class="my-favourites">
+            @foreach($myFavorites as $song)
+                <div class="mx-2">
+                    <a wire:click="playSong({{ $song->id }})" style="cursor: pointer">
+                        <img src="{{asset('img/song.jpg')}}" alt="">
+                        <p>{{$song->name}}</p>
+                        <p>{{$song->album->name}}</p>
+                        <p>{{$song->album->artist->user->name}}</p>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
     @if($viewResult)
         <section>
             @if($artists->count() > 0)
