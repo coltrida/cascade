@@ -12,6 +12,7 @@ class LettoreAudio extends Component
     public $percorsoCanzoneDaSuonare;
     public $idCanzoneDaSuonare;
     public $canzoneDaSuonare;
+    public $listaSongsDaSuonare;
 
     public function getListeners()
     {
@@ -42,12 +43,22 @@ class LettoreAudio extends Component
 
     public function shuffleAllMusic()
     {
-        $allMySongs = User::with(['albumSales' => function($a){
+        $allMyAlbums = User::with(['albumSales' => function($a){
             $a->with(['songs', 'artist' => function($art){
                 $art->with('user');
             }]);
         }])->find(auth()->user()->id)->albumSales;
-        dd($allMySongs);
+
+        $this->listaSongsDaSuonare = collect();
+
+        foreach ($allMyAlbums as $album) {
+            $this->listaSongsDaSuonare = $this->listaSongsDaSuonare->concat($album->songs);
+        }
+
+        foreach ($this->listaSongsDaSuonare as $song) {
+            $this->play($song->id);
+        }
+
     }
 
     public function render()
