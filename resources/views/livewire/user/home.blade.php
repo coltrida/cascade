@@ -10,13 +10,13 @@
         </div>
     </section>
 
-    <section>
+    <section class="latest-albums">
         <h2>My Last Albums</h2>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-between">
             @foreach($myLastAlbums as $album)
                 <div class="mx-2">
                     <a href="{{route('user.allArtist.albums.songs', ['idArtist' => $album->artist_id, 'idAlbum' => $album->id])}}">
-                        <img width="120" src="{{asset($album->cover)}}" alt="">
+                        <img  src="{{asset($album->cover)}}" alt="">
                         <p>{{$album->name}}</p>
                         <p>{{$album->artist->user->name}}</p>
                     </a>
@@ -25,13 +25,13 @@
         </div>
     </section>
 
-    <section style="margin-top: 60px">
+    <section id="my-favourites" style="margin-top: 60px">
         <h2>My Favorites</h2>
-        <div class="d-flex justify-content-center">
+        <div class="my-favourites">
             @foreach($myFavorites as $song)
                 <div class="mx-2">
                     <a wire:click="playSong({{ $song->id }})" style="cursor: pointer">
-                        <img width="120" src="{{asset('img/song.jpg')}}" alt="">
+                        <img src="{{asset('img/song.jpg')}}" alt="">
                         <p>{{$song->name}}</p>
                         <p>{{$song->album->name}}</p>
                         <p>{{$song->album->artist->user->name}}</p>

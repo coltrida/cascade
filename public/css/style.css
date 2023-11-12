@@ -2,6 +2,10 @@ body {
 
 }
 
+footer {
+    padding: 2% 0;
+}
+
 .new-slider div.new-abum {
     display:flex;
     padding:10px;
@@ -46,6 +50,7 @@ section.new-on-cascade p {
 .how {
     font-family: 'Kodchasan', sans-serif;
     padding:4% 5%;
+    background:#fff;
 
 }
 
@@ -117,4 +122,57 @@ section.new-on-cascade p {
 
 .value-artist .value-left .btn-warning {
     margin-left:0 !important;
+}
+
+/* PAGINA UTENTE LOGGATO */
+
+.main-container .container {
+    color:#F06D4E;
+}
+
+.justify-content-between img {
+    width:100%;
+}
+
+.latest-albums .mx-2 {
+    width:25%;
+}
+.latest-albums .mx-2 a,
+#my-favourites .mx-2 a {
+    text-decoration:none;
+}
+
+.my-favourites {
+    width:700px;
+    margin:0 auto;
+}
+
+.latest-albums .mx-2 p{
+    text-align:center;
+    color:#fff;
+    text-transform: uppercase;
+    margin-bottom:0;
+    margin-top:10px;
+
+}
+
+#my-favourites .mx-2 p {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    margin:0 auto;
+    margin-bottom: 0;
+    margin-top: 10px;
+    width: 94%;
+}
+
+
+
+.my-favourites img {
+    width: 70%;
+    margin:0 auto;
+}
+
+section#my-favourites {
+    padding-bottom: 4%;
 }

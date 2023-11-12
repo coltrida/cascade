@@ -214,7 +214,7 @@
     </div>
 </nav>
 
-<div style="min-height: 31rem;">
+<div class="main-container" style="background:#000;min-height: 31rem;">
     {{ $slot }}
 </div>
 
@@ -248,6 +248,15 @@ $(document).ready(function(){
   });
 
     $('#messageBox').fadeOut(5000);
+
+    $('.my-favourites').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    prevArrow:"<button type='button' class='slick-prev pull-left'><i class='bi bi-chevron-left'></i></button>",
+    nextArrow:"<button type='button' class='slick-next pull-right'><i class='bi bi-chevron-right'></i></button>"
+  });
 });
 </script>
 
