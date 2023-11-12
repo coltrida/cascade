@@ -176,6 +176,17 @@
                         <button type="button" class="btn btn-warning rounded-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             {{auth()->user()->name}}
                         </button>
+                        <li class="nav-item search">
+                            <a class="mx-2" style="cursor:pointer;color:#F06D4E; font-size: 28px">
+                               <i class="bi bi-search"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item search-close">
+                            <a class="mx-2" style="cursor:pointer;color:#fff; font-size: 28px">
+                                <i class="bi bi-x-circle"></i>
+                            </a>
+                        </li>
+                        
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li>
@@ -257,6 +268,20 @@ $(document).ready(function(){
     prevArrow:"<button type='button' class='slick-prev pull-left'><i class='bi bi-chevron-left'></i></button>",
     nextArrow:"<button type='button' class='slick-next pull-right'><i class='bi bi-chevron-right'></i></button>"
   });
+  
+  $('.search').click(function(){
+    $('#user-search').slideDown()
+    $(this).hide()
+    $('.search-close').show()
+
+  })
+
+  $('.search-close').click(function(){
+    $('#user-search').slideUp()
+    $(this).hide()
+    $('.search').show()
+
+  })
 });
 </script>
 
