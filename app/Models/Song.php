@@ -37,6 +37,11 @@ class Song extends Model
         return $this->album;
     }
 
+    public function getPathAttribute()
+    {
+        return '/storage/songs/'.$this->id.'.mp3';
+    }
+
     public function album()
     {
         return $this->belongsTo(Album::class);

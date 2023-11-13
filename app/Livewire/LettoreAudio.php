@@ -12,7 +12,7 @@ class LettoreAudio extends Component
     public $percorsoCanzoneDaSuonare;
     public $idCanzoneDaSuonare;
     public $canzoneDaSuonare;
-    public $listaSongsDaSuonare;
+    public $listaSongsDaSuonare = [];
 
     public function getListeners()
     {
@@ -20,6 +20,21 @@ class LettoreAudio extends Component
             "playsong" => 'play',
             "shuffleAllMusic" => 'shuffleAllMusic',
         ];
+    }
+
+    public function mount()
+    {
+        $allMyAlbums = User::with(['albumSales' => function($a){
+            $a->with(['songs', 'artist' => function($art){
+                $art->with('user');
+            }]);
+        }])->find(auth()->user()->id)->albumSales;
+
+        $this->caricaCanzoniDaSuonare();
+
+        foreach ($allMyAlbums as $album) {
+            $this->listaSongsDaSuonare = $this->listaSongsDaSuonare->concat($album->songs);
+        }
     }
 
     public function addToFavorites()
@@ -32,13 +47,21 @@ class LettoreAudio extends Component
 
     public function play($idSong)
     {
+        $this->caricaCanzoniDaSuonare();
+
         $this->idCanzoneDaSuonare = $idSong;
         $this->canzoneDaSuonare = Song::with(['album' => function($a){
             $a->with(['artist' => function($art){
                 $art->with('user');
             }]);
         }])->find($idSong);
+        $this->listaSongsDaSuonare->push($this->canzoneDaSuonare);
         $this->percorsoCanzoneDaSuonare = '/storage/songs/'.$idSong.'.mp3';
+    }
+
+    public function caricaCanzoniDaSuonare()
+    {
+        $this->listaSongsDaSuonare = collect();
     }
 
     public function shuffleAllMusic()
@@ -49,7 +72,7 @@ class LettoreAudio extends Component
             }]);
         }])->find(auth()->user()->id)->albumSales;
 
-        $this->listaSongsDaSuonare = collect();
+        $this->caricaCanzoniDaSuonare();
 
         foreach ($allMyAlbums as $album) {
             $this->listaSongsDaSuonare = $this->listaSongsDaSuonare->concat($album->songs);
