@@ -115,7 +115,14 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-black">
     <div class="container-fluid">
 
+        @auth
             <img src="{{asset('/img/logoSmall.png')}}" class="mx-2" alt="logo" width="40">
+        @else
+            <a wire:navigate href="{{route('home')}}">
+                <img src="{{asset('/img/logo.jpg')}}" class="mx-2" alt="logo" width="340">
+            </a>
+        @endauth
+
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -186,7 +193,7 @@
                                 <i class="bi bi-x-circle"></i>
                             </a>
                         </li>
-                        
+
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li>
@@ -269,7 +276,7 @@ $(document).ready(function(){
     prevArrow:"<button type='button' class='slick-prev pull-left'><i class='bi bi-chevron-left'></i></button>",
     nextArrow:"<button type='button' class='slick-next pull-right'><i class='bi bi-chevron-right'></i></button>"
   });
-  
+
   $('.search').click(function(){
     $('#user-search').slideDown()
     $(this).hide()

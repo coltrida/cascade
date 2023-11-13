@@ -15,7 +15,7 @@ use App\Livewire\User\AllArtist;
 use App\Livewire\User\Favorites;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', Home::class);
+Route::get('/', Home::class)->name('home');
 
 //-------------------Admin------------------------------
 Route::group(

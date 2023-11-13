@@ -24,17 +24,19 @@ class LettoreAudio extends Component
 
     public function mount()
     {
-        $allMyAlbums = User::with(['albumSales' => function($a){
-            $a->with(['songs', 'artist' => function($art){
-                $art->with('user');
-            }]);
-        }])->find(auth()->user()->id)->albumSales;
-
         $this->caricaCanzoniDaSuonare();
+        if (isset(auth()->user()->id)){
+            $allMyAlbums = User::with(['albumSales' => function($a){
+                $a->with(['songs', 'artist' => function($art){
+                    $art->with('user');
+                }]);
+            }])->find(auth()->user()->id)->albumSales;
 
-        foreach ($allMyAlbums as $album) {
-            $this->listaSongsDaSuonare = $this->listaSongsDaSuonare->concat($album->songs);
+            foreach ($allMyAlbums as $album) {
+                $this->listaSongsDaSuonare = $this->listaSongsDaSuonare->concat($album->songs);
+            }
         }
+
     }
 
     public function addToFavorites()

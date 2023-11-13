@@ -1,7 +1,7 @@
 <div>
 
         @persist('player')
-        <!-- <audio src="{{ asset($percorsoCanzoneDaSuonare) }}" autoplay controls></audio> -->
+    @auth
         <div class="simple-audio-player" id="simp" data-config='{"shide_top":false,"shide_btm":false,"auto_load":false}'>
 
             <div class="simp-playlist">
@@ -24,6 +24,7 @@
            aria-current="page" wire:click="addToFavorites">
             <i class="bi bi-heart-fill"></i>
         </a>
+    @endauth
 {{--        <span style="color: white">{{$canzoneDaSuonare->name}} - {{$canzoneDaSuonare->album->name}} - {{$canzoneDaSuonare->album->artist->user->name}}</span>--}}
         @endpersist
 
