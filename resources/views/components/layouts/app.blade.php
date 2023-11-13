@@ -224,7 +224,7 @@
                         <a class="btn btn-warning rounded-5 mx-2" aria-current="page" href="{{route('login')}}">LOG IN</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-light rounded-5 mx-2" href="{{route('register')}}">I'M AN ARTIST</a>
+                        <a class="btn btn-light rounded-5 mx-2" href="{{route('guestArtist')}}">I'M AN ARTIST</a>
                     </li>
                 @endauth
             </ul>

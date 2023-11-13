@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -11,23 +10,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
+class ArtistController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
-    public function create(): View
+    public function index()
     {
-        return view('auth.register');
+        return view('auth/guestArtist');
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
+    public function login()
+    {
+        return view('auth/loginArtist');
+    }
+
+    public function register()
+    {
+        return view('auth/registerArtist');
+    }
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -41,7 +41,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'surname' => $request->surname,
             'email' => $request->email,
-            'role' => 'user',
+            'role' => 'artist',
             'password' => Hash::make($request->password),
         ]);
 

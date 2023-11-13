@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Admin\Albums;
@@ -16,6 +17,12 @@ use App\Livewire\User\Favorites;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
+
+Route::get('/guestArtist', [ArtistController::class, 'index'])->name('guestArtist');
+Route::get('/loginArtist', [ArtistController::class, 'login'])->name('loginArtist');
+Route::get('/registerArtist', [ArtistController::class, 'register'])->name('registerArtist');
+Route::post('/registerArtist', [ArtistController::class, 'store'])->name('storeArtist');
+
 
 //-------------------Admin------------------------------
 Route::group(
