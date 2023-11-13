@@ -84,7 +84,7 @@
                         </tr>
                     @endforeach
                     <tr>
-                        <td colspan="3">{{ $artists->links() }}</td>
+                        <td colspan="5">{{ $artists->links() }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -117,7 +117,7 @@
                     </tr>
                 @endforeach
                 <tr>
-                    <td colspan="3">{{ $albums->links() }}</td>
+                    <td colspan="5">{{ $albums->links() }}</td>
                 </tr>
                 </tbody>
             </table>
