@@ -1,18 +1,21 @@
 <div>
     @persist('player')
     @auth
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center" style="{{$visualizzaLettore ? 'display:block' : 'visibility:hidden'}}">
             <div class="d-flex text-white justify-content-center">
                 <div class="d-flex border rounded-2 p-3" style="box-shadow: white 2px 2px 2px;">
 
-                    <div class="border rounded-2 p-2 fs-3" style="cursor: pointer">
+                    <div class="border rounded-2 p-2 fs-3"
+                         style="cursor: pointer; {{$inShuffleMode ? 'color:red; background: lightslategray' : ''}}">
                         <i class="bi bi-shuffle"></i>
                     </div>
-                    <div class="border rounded-2 p-2 fs-3" style="cursor: pointer">
+                    <div class="border rounded-2 p-2 fs-3"
+                         style="cursor: pointer"
+                         id="backwardBtn">
                         <i class="bi bi-skip-backward-circle-fill"></i>
                     </div>
                     <div class="border rounded-2 p-2 fs-3"
-                         style="cursor: pointer; {{$canzoneInPlay ? 'background: lightslategray' : ''}}"
+                         style="cursor: pointer; {{$canzoneInPlay ? 'color:red; background: lightslategray' : ''}}"
                          id="playBtn">
                         <i class="bi {{$canzoneInPlay ? 'bi-pause' : 'bi-play'}}"></i>
                     </div>
@@ -41,7 +44,6 @@
                 </div>
             </div>
         </div>
-
     @endauth
     @endpersist
 </div>
@@ -51,13 +53,8 @@
         let playAudio = new Audio();
         let playBtn = document.querySelector('#playBtn');
         let forwardBtn = document.querySelector('#forwardBtn');
+        let backwardBtn = document.querySelector('#backwardBtn');
         let volumeRange = document.querySelector('#volumeRange');
-
-        /*volumeRange.onInput = function(val){
-            console.log(val)
-            console.log('ok')
-            playAudio.volume = val;
-        }*/
 
         volumeRange.addEventListener("input", (event) => {
             playAudio.volume = event.target.value;
@@ -76,6 +73,14 @@
             playAudio.play();
         })
 
+        Livewire.on('shuffleON', () => {
+            console.log('on')
+        })
+
+        Livewire.on('shuffleOFF', () => {
+            console.log('of')
+        })
+
         playBtn.onclick = function(){
             if(!playAudio.paused){
                 Livewire.dispatch('pauseBtn')
@@ -85,7 +90,11 @@
         };
 
         forwardBtn.onclick = function(){
-            console.log(playAudio.volume)
+
+        };
+
+        backwardBtn.onclick = function(){
+
         };
     })
 </script>

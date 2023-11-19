@@ -9,11 +9,12 @@ use Livewire\Component;
 
 class LettoreAudio extends Component
 {
-    public $percorsoCanzoneDaSuonare;
+    public $visualizzaLettore = false;
     public $idCanzoneDaSuonare = 0;
     public $canzoneAttualmenteInPlay;
     public $listaSongsDaSuonare = [];
     public $canzoneInPlay = false;
+    public $inShuffleMode = false;
 
     public function getListeners()
     {
@@ -35,6 +36,7 @@ class LettoreAudio extends Component
 
     public function play($idSong)
     {
+        $this->visualizzaLettore = true;
         $this->idCanzoneDaSuonare = $idSong;
         $this->canzoneAttualmenteInPlay = Song::with('album')->find($idSong);
 
@@ -58,24 +60,37 @@ class LettoreAudio extends Component
         $this->dispatch('pausa');
     }
 
-    public function shuffleAllMusic()
+    private function caricaTutteLeMieCanzoni()
     {
-/*        $allMyAlbums = User::with(['albumSales' => function($a){
-            $a->with(['songs', 'artist' => function($art){
-                $art->with('user');
+        $allMyAlbums = User::with(['albumSales' => function($a){
+            $a->with(['songs' => function($s){
+                $s->with(['album' => function($a){
+                    $a->with(['artist' => function($ar){
+                        $ar->with('user');
+                    }]);
+                }]);
             }]);
         }])->find(auth()->user()->id)->albumSales;
 
-        $this->caricaCanzoniDaSuonare();
-
+        $this->listaSongsDaSuonare = collect();
         foreach ($allMyAlbums as $album) {
             $this->listaSongsDaSuonare = $this->listaSongsDaSuonare->concat($album->songs);
         }
+    }
 
-        foreach ($this->listaSongsDaSuonare as $song) {
-            $this->play($song->id);
-        }*/
+    public function shuffleAllMusic()
+    {
+        if (count($this->listaSongsDaSuonare) == 0 ){
+            $this->caricaTutteLeMieCanzoni();
+        }
 
+        if ($this->inShuffleMode){
+            $this->dispatch('shuffleOFF');
+        } else {
+            $this->dispatch('shuffleON');;
+        }
+
+        $this->inShuffleMode = !$this->inShuffleMode;
     }
 
     public function render()
