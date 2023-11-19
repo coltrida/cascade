@@ -55,6 +55,7 @@
         let forwardBtn = document.querySelector('#forwardBtn');
         let backwardBtn = document.querySelector('#backwardBtn');
         let volumeRange = document.querySelector('#volumeRange');
+        let listaCanzoni = [];
 
         volumeRange.addEventListener("input", (event) => {
             playAudio.volume = event.target.value;
@@ -73,8 +74,17 @@
             playAudio.play();
         })
 
-        Livewire.on('shuffleON', () => {
-            console.log('on')
+        Livewire.on('shuffleON', (listaCanzoniDaSuonare) => {
+            if(listaCanzoni.length === 0) {
+                listaCanzoni = listaCanzoniDaSuonare.listaCanzoniDaSuonare
+            }
+
+            playAudio.addEventListener('ended', function(){
+                let randomSong = listaCanzoni[Math.floor(Math.random()*listaCanzoni.length)];
+                playAudio.src = '/storage/songs/'+randomSong.id+'.mp3'
+                playAudio.play();
+                Livewire.dispatch('visualizzaNuovaCanzonaSuonata', { song: randomSong })
+            })
         })
 
         Livewire.on('shuffleOFF', () => {

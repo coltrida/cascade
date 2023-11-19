@@ -23,6 +23,7 @@ class LettoreAudio extends Component
             "shuffleAllMusic" => 'shuffleAllMusic',
             "playBtn" => 'playBtn',
             "pauseBtn" => 'pauseBtn',
+            "visualizzaNuovaCanzonaSuonata" => 'visualizzaNuovaCanzonaSuonata',
         ];
     }
 
@@ -87,10 +88,16 @@ class LettoreAudio extends Component
         if ($this->inShuffleMode){
             $this->dispatch('shuffleOFF');
         } else {
-            $this->dispatch('shuffleON');;
+            $this->dispatch('shuffleON', listaCanzoniDaSuonare:$this->listaSongsDaSuonare);;
         }
 
         $this->inShuffleMode = !$this->inShuffleMode;
+    }
+
+    public function visualizzaNuovaCanzonaSuonata(Song $song)
+    {
+        $this->canzoneAttualmenteInPlay = $song;
+//        dd();
     }
 
     public function render()
