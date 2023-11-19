@@ -238,8 +238,8 @@
 
 <footer style="background: #000000">
     <div class="text-center bg-gray-100">
-            <h5 class="text-white">cascade @2023</h5>
-            <livewire:lettore-audio />
+        <livewire:lettore-audio />
+        <h5 class="text-white">cascade @2023</h5>
     </div>
 </footer>
 
@@ -248,7 +248,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 </script>  -->
 <script src="{{asset('/js/bootstrap.bundle.js')}}"></script>
-<script src="{{asset('/js/player-script.js')}}"></script>
+{{--<script src="{{asset('/js/player-script.js')}}"></script>--}}
 <script
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

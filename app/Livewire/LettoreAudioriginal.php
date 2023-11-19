@@ -10,19 +10,33 @@ use Livewire\Component;
 class LettoreAudio extends Component
 {
     public $percorsoCanzoneDaSuonare;
-    public $idCanzoneDaSuonare = 0;
-    public $canzoneAttualmenteInPlay;
+    public $idCanzoneDaSuonare;
+    public $canzoneDaSuonare;
     public $listaSongsDaSuonare = [];
-    public $canzoneInPlay = false;
 
     public function getListeners()
     {
         return [
             "playsong" => 'play',
             "shuffleAllMusic" => 'shuffleAllMusic',
-            "playBtn" => 'playBtn',
-            "pauseBtn" => 'pauseBtn',
         ];
+    }
+
+    public function mount()
+    {
+        $this->caricaCanzoniDaSuonare();
+        if (isset(auth()->user()->id)){
+            $allMyAlbums = User::with(['albumSales' => function($a){
+                $a->with(['songs', 'artist' => function($art){
+                    $art->with('user');
+                }]);
+            }])->find(auth()->user()->id)->albumSales;
+
+            foreach ($allMyAlbums as $album) {
+                $this->listaSongsDaSuonare = $this->listaSongsDaSuonare->concat($album->songs);
+            }
+        }
+
     }
 
     public function addToFavorites()
@@ -35,32 +49,26 @@ class LettoreAudio extends Component
 
     public function play($idSong)
     {
+        $this->caricaCanzoniDaSuonare();
+
         $this->idCanzoneDaSuonare = $idSong;
-        $this->canzoneAttualmenteInPlay = Song::with('album')->find($idSong);
-
-        if ($this->canzoneInPlay){
-            $this->dispatch('pausa');
-        } else {
-            $this->dispatch('suona', idSong:$idSong);
-        }
-        $this->canzoneInPlay = !$this->canzoneInPlay;
+        $this->canzoneDaSuonare = Song::with(['album' => function($a){
+            $a->with(['artist' => function($art){
+                $art->with('user');
+            }]);
+        }])->find($idSong);
+        $this->listaSongsDaSuonare->push($this->canzoneDaSuonare);
+        $this->percorsoCanzoneDaSuonare = '/storage/songs/'.$idSong.'.mp3';
     }
 
-    public function playBtn()
+    public function caricaCanzoniDaSuonare()
     {
-        $this->canzoneInPlay = !$this->canzoneInPlay;
-        $this->dispatch('riprendi');
-    }
-
-    public function pauseBtn()
-    {
-        $this->canzoneInPlay = !$this->canzoneInPlay;
-        $this->dispatch('pausa');
+        $this->listaSongsDaSuonare = collect();
     }
 
     public function shuffleAllMusic()
     {
-/*        $allMyAlbums = User::with(['albumSales' => function($a){
+        $allMyAlbums = User::with(['albumSales' => function($a){
             $a->with(['songs', 'artist' => function($art){
                 $art->with('user');
             }]);
@@ -74,12 +82,12 @@ class LettoreAudio extends Component
 
         foreach ($this->listaSongsDaSuonare as $song) {
             $this->play($song->id);
-        }*/
+        }
 
     }
 
     public function render()
     {
-        return view('livewire.lettore-audio');
+        return view('livewire.lettore-audioriginal');
     }
 }

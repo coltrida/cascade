@@ -31,8 +31,8 @@
                     @if($albumBought)
                     <button wire:click="playSong({{ $item->id }})"
                             class="btn btn-primary" style="width: 50px">
-                        @if($item->id == $isSongInPlay)
-                            <i class="bi bi-pause-circle"></i>
+                        @if($item->id == $isSongInPlay && $canzoneInPlay)
+                            <i class="bi bi-stop-circle"></i>
                         @else
                             <i class="bi bi-play-circle"></i>
                         @endif

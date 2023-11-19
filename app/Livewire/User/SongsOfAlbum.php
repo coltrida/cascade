@@ -13,6 +13,7 @@ class SongsOfAlbum extends Component
     public $user;
     public $isSongInPlay;
     public $albumBought;
+    public $canzoneInPlay = false;
 
     public function getListeners()
     {
@@ -28,6 +29,7 @@ class SongsOfAlbum extends Component
 
     public function playSong($idSong)
     {
+        $this->canzoneInPlay = !$this->canzoneInPlay;
         $this->isSongInPlay = $idSong;
         $this->dispatch('playsong', idSong: $idSong)->to(LettoreAudio::class);
     }
