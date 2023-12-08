@@ -1,7 +1,8 @@
 <div>
     @persist('player')
     @auth
-        <div class="d-flex justify-content-center" style="{{$visualizzaLettore ? 'display:block' : 'visibility:hidden'}}">
+{{--        <div class="d-flex justify-content-center" style="{{$visualizzaLettore ? 'display:block' : 'visibility:hidden'}}">--}}
+        <div class="d-flex justify-content-center">
             <div class="d-flex text-white justify-content-center">
                 <div class="d-flex border rounded-2 p-3" style="box-shadow: white 2px 2px 2px;">
 
@@ -37,7 +38,7 @@
                     </div>
                     <div>
                         @if($canzoneAttualmenteInPlay)
-                            {{$canzoneAttualmenteInPlay->name}} <br>
+                            {{$canzoneAttualmenteInPlay->id}} - {{$canzoneAttualmenteInPlay->name}} <br>
                             {{$canzoneAttualmenteInPlay->album->name}}
                         @endif
                     </div>
@@ -76,7 +77,11 @@
 
         Livewire.on('shuffleON', (listaCanzoniDaSuonare) => {
             if(listaCanzoni.length === 0) {
-                listaCanzoni = listaCanzoniDaSuonare.listaCanzoniDaSuonare
+                listaCanzoni = listaCanzoniDaSuonare.listaCanzoniDaSuonare;
+                let randomSong = listaCanzoni[Math.floor(Math.random()*listaCanzoni.length)];
+                playAudio.src = '/storage/songs/'+randomSong.id+'.mp3'
+                playAudio.play();
+                Livewire.dispatch('visualizzaNuovaCanzonaSuonata', { song: randomSong })
             }
 
             playAudio.addEventListener('ended', function(){

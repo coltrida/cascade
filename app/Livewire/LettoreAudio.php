@@ -82,6 +82,8 @@ class LettoreAudio extends Component
     public function shuffleAllMusic()
     {
         if (count($this->listaSongsDaSuonare) == 0 ){
+            $this->visualizzaLettore = true;
+            $this->canzoneInPlay = true;
             $this->caricaTutteLeMieCanzoni();
         }
 
