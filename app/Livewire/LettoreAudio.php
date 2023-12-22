@@ -15,6 +15,7 @@ class LettoreAudio extends Component
     public $listaSongsDaSuonare = [];
     public $canzoneInPlay = false;
     public $inShuffleMode = false;
+    public $canzoneAttualmenteInPlayIsFavorite = false;
 
     public function getListeners()
     {
@@ -27,19 +28,24 @@ class LettoreAudio extends Component
         ];
     }
 
-    public function addToFavorites()
+/*    public function addToFavorites()
     {
-        $user = User::with('favorites')->find(auth()->user()->id);
-        $user->favorites()->toggle($this->idCanzoneDaSuonare);
-        $this->dispatch('addSongToFavorite', idAlbum: Song::find($this->idCanzoneDaSuonare)->album_id)
-            ->to(SongsOfAlbum::class);
-    }
+        if ($this->idCanzoneDaSuonare){
+            $user = User::with('favorites')->find(auth()->user()->id);
+            $user->favorites()->toggle($this->idCanzoneDaSuonare);
+            $this->dispatch('addSongToFavorite', idAlbum: Song::find($this->idCanzoneDaSuonare)->album_id);
+            $this->canzoneAttualmenteInPlayIsFavorite = !$this->canzoneAttualmenteInPlayIsFavorite;
+        }
+    }*/
 
     public function play($idSong)
     {
         $this->visualizzaLettore = true;
         $this->idCanzoneDaSuonare = $idSong;
-        $this->canzoneAttualmenteInPlay = Song::with('album')->find($idSong);
+        $this->canzoneAttualmenteInPlay = Song::with('album', 'favorites')->find($idSong);
+
+        $this->canzoneAttualmenteInPlayIsFavorite =
+            $this->canzoneAttualmenteInPlay->favorites->contains('id', auth()->user()->id);
 
         if ($this->canzoneInPlay){
             $this->dispatch('pausa');
@@ -51,8 +57,11 @@ class LettoreAudio extends Component
 
     public function playBtn()
     {
-        $this->canzoneInPlay = !$this->canzoneInPlay;
-        $this->dispatch('riprendi');
+        if ($this->idCanzoneDaSuonare){
+            $this->canzoneInPlay = !$this->canzoneInPlay;
+            $this->dispatch('riprendi');
+        }
+
     }
 
     public function pauseBtn()

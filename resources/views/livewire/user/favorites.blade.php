@@ -12,7 +12,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($songFavorites as $item)
+        @foreach ($user->favorites as $item)
             <tr>
                 <th scope="row">{{$item->id}}</th>
                 <td>{{$item->name}}</td>

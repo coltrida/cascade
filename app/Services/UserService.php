@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request;
 
 class UserService
 {
-    public function listOfUsers()
+    public function listOfUsersPaginate()
     {
         return User::utenti()
             ->when(Request::input('search'), function ($query, $search){
@@ -27,7 +27,31 @@ class UserService
         ]);
     }
 
-    public function listOfArtists()
+    /*public function listOfUsers()
+    {
+        return User::utenti()
+            ->when(Request::input('search'), function ($query, $search){
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->get()
+            ->map(fn($user) => [
+                'id' => $user->id,
+                'name' => $user->fullname,
+                'email' => $user->email,
+                'created' => $user->created,
+            ]);
+    }*/
+
+    public function listOfUsers()
+    {
+        return User::utenti()
+            ->when(Request::input('search'), function ($query, $search){
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->get();
+    }
+
+    public function listOfArtistsPaginate()
     {
         return User::artisti()
             ->when(Request::input('search'), function ($query, $search){

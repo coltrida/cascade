@@ -162,6 +162,9 @@
                             <li class="nav-item">
                                 <a class="btn btn-warning rounded-5" href="{{route('user.myAlbums')}}" wire:navigate.hover>My Albums</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="btn btn-warning rounded-5 mx-2" href="{{route('user.favorites')}}" wire:navigate.hover>My Favorites</a>
+                            </li>
                     @endif
                 @endauth
             </ul>
@@ -172,12 +175,12 @@
 
                         <livewire:shuffle-btn />
 
-                        <li class="nav-item">
+                        {{--<li class="nav-item">
                             <a class="mx-2" style="color: red; font-size: 28px"
                                aria-current="page" href="{{route('user.favorites')}}" wire:navigate>
                                 <i class="bi bi-heart-fill"></i>
                             </a>
-                        </li>
+                        </li>--}}
                     @endif
                     <div class="btn-group dropstart">
                         <button type="button" class="btn btn-warning rounded-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">

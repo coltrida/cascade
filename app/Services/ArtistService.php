@@ -4,12 +4,25 @@ namespace App\Services;
 
 use App\Models\Album;
 use App\Models\Artist;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 
 class ArtistService
 {
+    public function listOfArtists()
+    {
+        return User::artisti()
+            ->when(Request::input('search'), function ($query, $search){
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->with(['artist' => function($a){
+                $a->withCount('albums');
+            }])
+            ->get();
+    }
+
     public function artistConMyAlbums($idArtist)
     {
         /*dd(Artist::with(['albums' => function($a){

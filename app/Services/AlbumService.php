@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request;
 
 class AlbumService
 {
-    public function listOfAlbums()
+    public function listOfAlbumsPaginate()
     {
         return Album::
             with('artist')
@@ -26,20 +26,61 @@ class AlbumService
                 'name' => $album->name,
                 'artist' => $album->artist->user->name,
                 'nrSongs' => $album->songs_count,
+                'cover' => $album->cover,
             ]);
     }
 
-    public function lastCinqueAlbum()
+    /*public function listOfAlbums()
     {
-        /*dd(Album::latest()->limit(5)->get()->map(fn($album) => [
-            'id' => $album->id,
-            'name' => $album->name,
-        ]));*/
+        return Album::
+        with('artist')
+            ->withCount('songs')
+            ->when(Request::input('search'), function ($query, $search){
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->get()
+            ->map(fn($album) => [
+                'id' => $album->id,
+                'name' => $album->name,
+                'artist' => $album->artist->user->name,
+                'cover' => $album->cover,
+                'nrSongs' => $album->songs_count,
+            ]);
+    }*/
+
+    public function listOfAlbums()
+    {
+        return Album::
+        with(['artist' => function($a){
+            $a->with('user');
+        }])
+            ->withCount('songs')
+            ->when(Request::input('search'), function ($query, $search){
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->get();
+    }
+
+    /*public function lastCinqueAlbum()
+    {
         return Album::where('visible', 1)->latest()->limit(5)->get()->map(fn($album) => [
             'id' => $album->id,
             'name' => $album->name,
+            'artist' => $album->artist->user->name,
             'cover' => $album->cover,
         ]);
+    }*/
+
+    public function lastCinqueAlbum()
+    {
+        return Album::where('visible', 1)
+            ->with(['artist' => function($a){
+                $a->with('user');
+            }])
+            ->withCount('songs')
+            ->latest()
+            ->limit(5)
+            ->get();
     }
 
     public function bestCinqueAlbumSellers()
@@ -59,13 +100,26 @@ class AlbumService
         ]);
     }
 
-    public function albumConSongs($idAlbum)
-    {
-        /*dd(Album::select('id','name')->with(['songs' => function($s){
-            $s->latest()->select('id', 'album_id', 'name');
-        }])->find($idAlbum));*/
+    /*   public function albumConSongs($idAlbum)
+       {
         return Album::select('id','name', 'visible')->with(['userSales','songs' => function($s){
             $s->latest()->select('id', 'album_id', 'name');
+        }])->find($idAlbum);
+    }*/
+
+    /*public function albumWithSongs($idAlbum)
+    {
+        return Album::select('id','name', 'visible')->with(['songs' => function($s){
+            $s->latest()->select('id', 'album_id', 'name');
+        }])->find($idAlbum);
+    }*/
+
+    public function albumWithSongs($idAlbum)
+    {
+        return Album::with(['artist' => function($a){
+            $a->with('user');
+        },'songs' => function($s){
+            $s->latest();
         }])->find($idAlbum);
     }
 
@@ -105,5 +159,12 @@ class AlbumService
     public function followersOfAlbum($idAlbum)
     {
         return Album::with('userSales')->find($idAlbum);
+    }
+
+    public function myLastAlbumsComprati($idUser)
+    {
+        return User::with(['albumSales' => function($a){
+            $a->limit(7)->get();
+        }])->find($idUser)->albumSales;
     }
 }

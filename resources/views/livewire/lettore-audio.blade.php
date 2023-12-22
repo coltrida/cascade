@@ -21,13 +21,15 @@
                         <i class="bi {{$canzoneInPlay ? 'bi-pause' : 'bi-play'}}"></i>
                     </div>
                     <div class="border rounded-2 p-2 fs-3"
-                         style="cursor: pointer"
+                         style="cursor: pointer;"
                          id="forwardBtn">
                         <i class="bi bi-fast-forward-circle-fill"></i>
                     </div>
-                    <div class="border rounded-2 p-2 fs-3" style="cursor: pointer" wire:click="addToFavorites">
+{{--                    <div class="border rounded-2 p-2 fs-3"
+                         style="cursor: pointer;  {{$canzoneAttualmenteInPlayIsFavorite ? 'color:red; background: lightslategray' : ''}}"
+                         wire:click="addToFavorites">
                         <i class="bi bi-heart-fill"></i>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
 

@@ -30,7 +30,7 @@ class Song extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $appends = ['alb'];
+//    protected $appends = ['alb'];
 
     public function getAlbAttribute()
     {

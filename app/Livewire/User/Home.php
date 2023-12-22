@@ -6,6 +6,7 @@ use App\Livewire\LettoreAudio;
 use App\Models\Album;
 use App\Models\Song;
 use App\Models\User;
+use App\Services\AlbumService;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -36,19 +37,19 @@ class Home extends Component
         $this->dispatch('playsong', idSong: $idSong)->to(LettoreAudio::class);
     }
 
-    public function render()
+    public function render(AlbumService $albumService)
     {
+        $idUser = auth()->user()->id;
+
         return view('livewire.user.home', [
-            'myLastAlbums' => User::with(['albumSales' => function($a){
-                    $a->limit(7)->get();
-                }])->find(auth()->user()->id)->albumSales,
-            'myFavorites' => User::with(['favorites' => function($s){
+            'myLastAlbums' => $albumService->myLastAlbumsComprati($idUser),
+            /*'myFavorites' => User::with(['favorites' => function($s){
                     $s->with(['album' => function($al){
                         $al->with(['artist' => function($ar){
                             $ar->with('user');
                         }]);
                     }]);
-                }])->find(auth()->user()->id)->favorites,
+                }])->find(auth()->user()->id)->favorites,*/
             'albums' => Album::where('name', $this->searchText)
                 ->with(['artist' => function($a){
                     $a->with('user');

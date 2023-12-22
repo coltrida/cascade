@@ -9,6 +9,37 @@ use Livewire\Component;
 class Favorites extends Component
 {
     public $idSongInPlay;
+    public $idUser;
+    public $user;
+
+    public function getListeners()
+    {
+        return [
+            "addSongToFavorite" => 'addSongToFavorite',
+        ];
+    }
+
+    public function addSongToFavorite($idAlbum)
+    {
+        $this->caricaSongs();
+    }
+
+    private function caricaSongs()
+    {
+        $this->user = User::with(['favorites' => function($s){
+            $s->with(['album' => function($al){
+                $al->with(['artist' => function($art){
+                    $art->with('user');
+                }]);
+            }]);
+        }])->find($this->idUser);
+    }
+
+    public function mount()
+    {
+        $this->idUser = auth()->user()->id;
+        $this->caricaSongs();
+    }
 
     public function playSong($idSong)
     {
@@ -18,14 +49,6 @@ class Favorites extends Component
 
     public function render()
     {
-        return view('livewire.user.favorites', [
-            'songFavorites' => User::with(['favorites' => function($s){
-                $s->with(['album' => function($al){
-                    $al->with(['artist' => function($art){
-                        $art->with('user');
-                    }]);
-                }]);
-            }])->find(auth()->user()->id)->favorites
-        ]);
+        return view('livewire.user.favorites');
     }
 }

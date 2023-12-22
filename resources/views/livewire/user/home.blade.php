@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section id="my-favourites" style="margin-top: 60px">
+    {{--<section id="my-favourites" style="margin-top: 60px">
         <h2>My Favorites</h2>
         <div class="my-favourites">
             @foreach($myFavorites as $song)
@@ -39,12 +39,12 @@
                 </div>
             @endforeach
         </div>
-    </section>
+    </section>--}}
 
-    <section id="my-favourites" style="margin-top: 60px">
+    <section id="suggested" style="margin-top: 60px">
         <h2>Suggested for You</h2>
         <div class="my-favourites">
-            @foreach($myFavorites as $song)
+            {{--@foreach($myFavorites as $song)
                 <div class="mx-2">
                     <a wire:click="playSong({{ $song->id }})" style="cursor: pointer">
                         <img src="{{asset('img/song.jpg')}}" alt="">
@@ -53,7 +53,7 @@
                         <p>{{$song->album->artist->user->fullname}}</p>
                     </a>
                 </div>
-            @endforeach
+            @endforeach--}}
         </div>
     </section>
 
