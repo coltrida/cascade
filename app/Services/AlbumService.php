@@ -83,14 +83,8 @@ class AlbumService
             ->get();
     }
 
-    public function bestCinqueAlbumSellers()
+    /*public function bestCinqueAlbumSellers()
     {
-        /*dd(Album::withCount('userSales')->with('userSales')->limit(5)->get()->sortByDesc(function ($album){
-            return $album->userSales()->count();
-        })->map(fn($album) => [
-            'id' => $album->id,
-            'name' => $album->name,
-        ]));*/
         return Album::where('visible', 1)->withCount('userSales')->with('userSales')->limit(5)->get()->sortByDesc(function ($album){
             return $album->userSales()->count();
         })->map(fn($album) => [
@@ -98,6 +92,15 @@ class AlbumService
             'name' => $album->name,
             'cover' => $album->cover,
         ]);
+    }*/
+
+    public function bestCinqueAlbumSellers()
+    {
+        return Album::where('visible', 1)
+            ->withCount('userSales')
+            ->orderByDesc('user_sales_count')
+            ->limit(4)
+            ->get();
     }
 
     /*   public function albumConSongs($idAlbum)
@@ -164,7 +167,7 @@ class AlbumService
     public function myLastAlbumsComprati($idUser)
     {
         return User::with(['albumSales' => function($a){
-            $a->limit(7)->get();
+            $a->withCount('songs')->limit(7)->get();
         }])->find($idUser)->albumSales;
     }
 }

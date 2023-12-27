@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AlbumResource;
+use App\Http\Resources\AlbumSalesResource;
 use App\Http\Resources\AlbumWithSongsResource;
 use App\Services\AlbumService;
 use Illuminate\Http\Request;
@@ -28,5 +29,15 @@ class AlbumController extends Controller
     public function albumWithSongs($idAlbum, AlbumService $albumService)
     {
         return new AlbumWithSongsResource($albumService->albumWithSongs($idAlbum));
+    }
+
+    public function bestAlbumSellers(AlbumService $albumService)
+    {
+        return AlbumSalesResource::collection($albumService->bestCinqueAlbumSellers());
+    }
+
+    public function myLastAlbumsBought($idUser, AlbumService $albumService)
+    {
+        return AlbumResource::collection($albumService->myLastAlbumsComprati($idUser));
     }
 }

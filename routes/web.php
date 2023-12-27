@@ -16,7 +16,10 @@ use App\Livewire\User\AllArtist;
 use App\Livewire\User\Favorites;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', Home::class)->name('home');
+Route::get('/', function (){
+    return view('workInProgress');
+});
+//Route::get('/', Home::class)->name('home');
 
 Route::get('/guestArtist', [ArtistController::class, 'index'])->name('guestArtist');
 Route::get('/loginArtist', [ArtistController::class, 'login'])->name('loginArtist');

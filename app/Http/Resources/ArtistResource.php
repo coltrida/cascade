@@ -16,6 +16,7 @@ class ArtistResource extends JsonResource
     {
         return [
             'name' => $this->fullname,
+            'tag' => $this->artist->tag->name,
             'nrAlbum' => $this->artist->albums_count,
         ];
     }

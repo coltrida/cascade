@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AlbumResource extends JsonResource
+class AlbumSalesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,9 @@ class AlbumResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'price' => '€ '.$this->price,
             'artist' => $this->artist->user->fullname,
             'cover' => $this->cover,
-            'nrSongs' => $this->songs_count,
+            'nrOfSales' => $this->user_sales_count,
         ];
     }
 }

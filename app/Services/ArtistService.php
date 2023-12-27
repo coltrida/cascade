@@ -18,40 +18,13 @@ class ArtistService
                 $query->where('name', 'like', "%{$search}%");
             })
             ->with(['artist' => function($a){
-                $a->withCount('albums');
+                $a->withCount('albums')->with('tag');
             }])
             ->get();
     }
 
-    public function artistConMyAlbums($idArtist)
+    /*public function artistConMyAlbums($idArtist)
     {
-        /*dd(Artist::with(['albums' => function($a){
-            $a->withCount('songs');
-        }])
-            ->find($idArtist)
-            ->albums()->withCount('songs')
-            ->paginate(3)
-
-        );*/
-
-        /*dd(Artist::with(['albums' => function($a){
-            $a->withCount('songs');
-        }])
-            ->find($idArtist)
-            ->albums()->withCount('songs')
-            ->when(Request::input('search'), function ($query, $search){
-                $query->where('name', 'like', "%{$search}%");
-            })
-            ->latest()
-            ->paginate(3)
-            ->withQueryString()
-            ->through(fn($album) => [
-                'id' => $album->id,
-                'name' => $album->name,
-                'artist' => $album->artist->user->name,
-                'nrSongs' => $album->songs_count,
-            ]));*/
-
         return Artist::with(['albums' => function($a){
             $a->withCount('songs');
         }])
@@ -70,6 +43,20 @@ class ArtistService
                 'artist' => $album->artist->user->name,
                 'nrSongs' => $album->songs_count,
         ]);
+    }*/
+
+    public function albumsOfArtist($idArtist)
+    {
+        return Artist::with(['albums' => function($a){
+            $a->withCount('songs');
+        }])
+            ->find($idArtist)
+            ->albums()->withCount('songs')
+            ->when(Request::input('search'), function ($query, $search){
+                $query->where('name', 'like', "%{$search}%");
+            })
+            ->latest()
+            ->get();
     }
 
     public function createAlbum($request)
